@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd"
+                   logicalFilePath="erpico">
+    <changeSet id="2013-10-29-01" author="eiv">
+        <sql><![CDATA[
+            ALTER TABLE `acl_user` ADD COLUMN `application_state` TINYINT(4) ZEROFILL NULL ;
+            ]]>
+        </sql>
+    </changeSet>
+    <changeSet id="2013-10-29-02" author="eiv">
+        <sql><![CDATA[
+            ALTER TABLE `acl_user` ADD COLUMN `last_request` TIMESTAMP NULL ;
+            ]]>
+        </sql>
+    </changeSet>
+    <changeSet id="2013-10-29-03" author="eiv">
+        <sql><![CDATA[
+            ALTER TABLE `chat_message` ADD COLUMN `unread` INT NULL DEFAULT 1 ;
+            ]]>
+        </sql>
+    </changeSet>
+</databaseChangeLog>
