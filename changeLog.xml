@@ -45,4 +45,11 @@
             ]]>
         </sql>
     </changeSet>
+    <changeSet id="2013-10-30-01" author="eiv">
+        <sql><![CDATA[
+            INSERT INTO `cfg_server_setting` (`id`, `handle`, `val`, `updated`) VALUES ('202', 'user.presence.ttl', '60000', '2013-10-30 12:55:22');
+            ]]>
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
