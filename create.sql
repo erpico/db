@@ -232,3 +232,14 @@ CREATE TABLE `queue_agent` (
   CONSTRAINT `queue_agent_fk1` FOREIGN KEY (`queue_id`) REFERENCES `queue` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `queue_agent_fk2` FOREIGN KEY (`acl_user_id`) REFERENCES `acl_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE  TABLE `chat_message` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `from_id` INT(10) UNSIGNED NOT NULL ,
+  `to_id` INT(10) UNSIGNED NOT NULL ,
+  `datetime` DATETIME NULL ,
+  `content` VARCHAR(1024) NULL DEFAULT NULL ,
+  `type` INT(11) NULL DEFAULT NULL ,
+  `is_new_id` INT(11) NULL DEFAULT 1 ,
+  PRIMARY KEY (`id`) 
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;

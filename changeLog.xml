@@ -51,5 +51,21 @@
             ]]>
         </sql>
     </changeSet>
-
+    <changeSet id="2013-11-14-01" author="eiv">
+        <sql><![CDATA[
+            ALTER TABLE `chat_message` DROP COLUMN `is_new_id` ;
+        ]]>
+        </sql>
+    </changeSet>
+    <changeSet id="2013-11-14-02" author="eiv">
+        <sql><![CDATA[
+            CREATE  TABLE `chat_task` (
+                `id` INT(10) UNSIGNED NOT NULL ,
+                `dateEnd` TIMESTAMP NULL ,
+                PRIMARY KEY (`id`) )
+                ENGINE = InnoDB
+                DEFAULT CHARACTER SET = utf8;
+        ]]>
+        </sql>
+    </changeSet>
 </databaseChangeLog>
