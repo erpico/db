@@ -1,0 +1,34 @@
+<project name="erpico-db" default="migrate" basedir=".">
+  <property file="${basedir}/build.properties"/>
+  <property name="lib.dir" value="${basedir}/lib"/>
+
+  <!-- Ant classpath -->
+  <path id="tool.classpath">
+    <fileset dir="${lib.dir}">
+      <include name="*.jar"/>
+      <include name="*.zip"/>
+    </fileset>
+    <pathelement location="${basedir}"/>
+  </path>
+
+  <taskdef resource="liquibasetasks.properties" classpathref="tool.classpath"/>
+
+  <target name="migrate">
+    <fail unless="db.production.changelog.file">db.production.changelog.file not set</fail>
+
+    <fail unless="db.production.driver">db.production.driver not set</fail>
+    <fail unless="db.production.url">db.production.url not set</fail>
+    <fail unless="db.production.user">db.production.user not set</fail>
+    <fail unless="db.production.password">db.production.password not set</fail>
+
+    <updateDatabase
+        changelogfile="${db.production.changelog.file}"
+        driver="${db.production.driver}"
+        url="${db.production.url}"
+        username="${db.production.user}"
+        password="${db.production.password}"
+        classpathref="tool.classpath"
+      />
+  </target>
+
+</project>

@@ -1,19 +1,3 @@
-CREATE TABLE `acl_auth_token` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `acl_user_id` int(10) unsigned NOT NULL,
-  `token` varchar(32) NOT NULL,
-  `hwid` varchar(128) NOT NULL,
-  `pcode` varchar(128) NOT NULL,
-  `version` varchar(32) NOT NULL,
-  `ip` varchar(16) NOT NULL,
-  `issued` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `expire` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`,`acl_user_id`),
-  KEY `auth_token_FKIndex1` (`acl_user_id`),
-  CONSTRAINT `acl_auth_token_ibfk_1` FOREIGN KEY (`acl_user_id`) REFERENCES `acl_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 CREATE TABLE `acl_rule` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(256) DEFAULT NULL,
@@ -36,6 +20,29 @@ CREATE TABLE `acl_user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `acl_auth_token` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `acl_user_id` int(10) unsigned NOT NULL,
+  `token` varchar(32) NOT NULL,
+  `hwid` varchar(128) NOT NULL,
+  `pcode` varchar(128) NOT NULL,
+  `version` varchar(32) NOT NULL,
+  `ip` varchar(16) NOT NULL,
+  `issued` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `expire` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`,`acl_user_id`),
+  KEY `auth_token_FKIndex1` (`acl_user_id`),
+  CONSTRAINT `acl_auth_token_ibfk_1` FOREIGN KEY (`acl_user_id`) REFERENCES `acl_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `acl_user_meta_field` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(256) NOT NULL,
+  `description` varchar(1024) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE `acl_user_field` (
   `acl_user_id` int(10) unsigned NOT NULL,
   `acl_user_meta_field_id` int(10) unsigned NOT NULL,
@@ -46,6 +53,7 @@ CREATE TABLE `acl_user_field` (
   CONSTRAINT `acl_user_field_ibfk_1` FOREIGN KEY (`acl_user_id`) REFERENCES `acl_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `acl_user_field_ibfk_2` FOREIGN KEY (`acl_user_meta_field_id`) REFERENCES `acl_user_meta_field` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 CREATE TABLE `acl_user_group` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -82,13 +90,6 @@ CREATE TABLE `acl_user_has_rules` (
   KEY `user_has_rule_FKIndex2` (`acl_rule_id`),
   CONSTRAINT `acl_user_has_rules_ibfk_1` FOREIGN KEY (`acl_user_id`) REFERENCES `acl_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `acl_user_has_rules_ibfk_2` FOREIGN KEY (`acl_rule_id`) REFERENCES `acl_rule` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE `acl_user_meta_field` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(256) NOT NULL,
-  `description` varchar(1024) DEFAULT NULL,
-  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `cfg_group_setting` (
@@ -233,13 +234,22 @@ CREATE TABLE `queue_agent` (
   CONSTRAINT `queue_agent_fk2` FOREIGN KEY (`acl_user_id`) REFERENCES `acl_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE  TABLE `chat_message` (
-  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
-  `from_id` INT(10) UNSIGNED NOT NULL ,
-  `to_id` INT(10) UNSIGNED NOT NULL ,
-  `datetime` DATETIME NULL ,
-  `content` VARCHAR(1024) NULL DEFAULT NULL ,
-  `type` INT(11) NULL DEFAULT NULL ,
-  `is_new_id` INT(11) NULL DEFAULT 1 ,
+CREATE  TABLE `chat_message` (
+
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
+
+  `from_id` INT(10) UNSIGNED NOT NULL ,
+
+  `to_id` INT(10) UNSIGNED NOT NULL ,
+
+  `datetime` DATETIME NULL ,
+
+  `content` VARCHAR(1024) NULL DEFAULT NULL ,
+
+  `type` INT(11) NULL DEFAULT NULL ,
+
+  `is_new_id` INT(11) NULL DEFAULT 1 ,
+
   PRIMARY KEY (`id`) 
-) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
+
