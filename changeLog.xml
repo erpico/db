@@ -65,7 +65,14 @@
                 PRIMARY KEY (`id`) )
                 ENGINE = InnoDB
                 DEFAULT CHARACTER SET = utf8;
-        ]]>
+            ]]>
+        </sql>
+    </changeSet>
+    <changeSet id="2013-11-27-01" author="eiv">
+        <sql>
+            <![CDATA[
+            ALTER TABLE `chat_task` ADD COLUMN `prioritiyTask` INT NOT NULL DEFAULT 1  AFTER `dateEnd` ;
+            ]]>
         </sql>
     </changeSet>
 </databaseChangeLog>
