@@ -75,4 +75,11 @@
             ]]>
         </sql>
     </changeSet>
+    <changeSet id="2013-11-29-01" author="eiv">
+        <sql>
+            <![CDATA[
+            ALTER TABLE `chat_task` ADD COLUMN `taskStatus` INT(11) NULL DEFAULT -1  AFTER `prioritiyTask` ;
+            ]]>
+        </sql>
+    </changeSet>
 </databaseChangeLog>
