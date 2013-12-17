@@ -82,4 +82,11 @@
             ]]>
         </sql>
     </changeSet>
+    <changeSet id="2013-11-29-01" author="eiv">
+        <sql>
+            <![CDATA[
+                ALTER TABLE `queue` ADD COLUMN `viq` INT(11) NULL DEFAULT NULL  AFTER `close_on_hangup` ;
+            ]]>
+        </sql>
+    </changeSet>
 </databaseChangeLog>
