@@ -89,4 +89,13 @@
             ]]>
         </sql>
     </changeSet>
+    <changeSet id="2014-01-07-01" author="kae">
+        <sql>
+            <![CDATA[
+                ALTER TABLE `cfg_group_setting`
+                  DROP INDEX `cfg_group_setting_idx_handle`,
+                  ADD UNIQUE INDEX `cfg_group_setting_idx_handle` (`acl_user_group_id` ASC, `handle` ASC) ;
+            ]]>
+        </sql>
+    </changeSet>
 </databaseChangeLog>
