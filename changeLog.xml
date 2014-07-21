@@ -98,4 +98,11 @@
             ]]>
         </sql>
     </changeSet>
+  <changeSet id="2014-21-07-01" author="eiv">
+    <sql>
+      <![CDATA[
+          ALTER TABLE `acl_user` CHANGE COLUMN `application_state` `application_state` INT(32) UNSIGNED NOT NULL DEFAULT 0  ;
+      ]]>
+    </sql>
+  </changeSet>
 </databaseChangeLog>
