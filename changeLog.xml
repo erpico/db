@@ -82,13 +82,13 @@
             ]]>
         </sql>
     </changeSet>
-    <changeSet id="2013-12-17-01" author="eiv">
-        <sql>
-            <![CDATA[
-                ALTER TABLE `queue` ADD COLUMN `viq` INT(11) NULL DEFAULT NULL  AFTER `close_on_hangup` ;
-            ]]>
-        </sql>
-    </changeSet>
+    <!--<changeSet id="2013-12-17-01" author="eiv">-->
+        <!--<sql>-->
+            <!--<![CDATA[-->
+                <!--ALTER TABLE `queue` ADD COLUMN `viq` INT(11) NULL DEFAULT NULL  AFTER `close_on_hangup` ;-->
+            <!--]]>-->
+        <!--</sql>-->
+    <!--</changeSet>-->
     <changeSet id="2014-01-07-01" author="kae">
         <sql>
             <![CDATA[
@@ -103,6 +103,46 @@
       <![CDATA[
           ALTER TABLE `acl_user` CHANGE COLUMN `application_state` `application_state` INT(32) UNSIGNED NOT NULL DEFAULT 0  ;
       ]]>
+    </sql>
+  </changeSet>
+  <changeSet id="2014-04-08-01" author="eiv">
+    <sql>
+      <![CDATA[
+          CREATE  TABLE `contact` (
+            `id` INT NOT NULL AUTO_INCREMENT ,
+            `id_user` INT NOT NULL ,
+            `id_user_in_contact_list` INT NOT NULL ,
+            `hidden` TINYINT(1) NOT NULL DEFAULT 1 ,
+            PRIMARY KEY (`id`) );
+      ]]>
+    </sql>
+  </changeSet>
+  <changeSet id="2014-04-08-02" author="eiv">
+    <sql>
+      <![CDATA[
+          drop table `contact`;
+      ]]>
+    </sql>
+  </changeSet>
+  <changeSet id="2014-04-08-03" author="eiv">
+    <sql>
+      <![CDATA[
+          CREATE  TABLE `chat_contact` (
+            `id` INT NOT NULL AUTO_INCREMENT ,
+            `id_user` INT NOT NULL ,
+            `id_user_in_contact_list` INT NOT NULL ,
+            `hidden` TINYINT(1) NOT NULL DEFAULT 1 ,
+            PRIMARY KEY (`id`) );
+      ]]>
+    </sql>
+  </changeSet>
+  <changeSet id="2014-04-08-04" author="eiv">
+    <sql>
+      <![CDATA[
+          ALTER TABLE `chat_contact` DROP COLUMN `id`
+            , DROP PRIMARY KEY
+            , ADD PRIMARY KEY (`id_user`, `id_user_in_contact_list`) ;
+          ]]>
     </sql>
   </changeSet>
 </databaseChangeLog>
