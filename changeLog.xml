@@ -195,4 +195,10 @@
         CHANGE COLUMN `text` `content` VARCHAR(1023) NOT NULL DEFAULT '';
     ]]></sql>
   </changeSet>
+  <changeSet id="2014-08-26-02" author="kae">
+    <sql><![CDATA[
+      ALTER TABLE `external_user`
+        ADD UNIQUE INDEX `uid_idx` (`uid` ASC) ;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
