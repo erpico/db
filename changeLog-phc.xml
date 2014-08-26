@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd"
+                   logicalFilePath="phc-server-core">
+  <changeSet id="2012-04-17-01" author="kapralov">
+    <sql><![CDATA[CREATE TABLE cfg_server_setting (
+  id      INTEGER UNSIGNED NOT NULL,
+  handle  VARCHAR(255)     NOT NULL,
+  val   VARCHAR(1024)    NOT NULL DEFAULT '',
+  updated TIMESTAMP        NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE INDEX cfg_server_setting_idx_handle(handle),
+  INDEX cfg_server_setting_idx_updated(updated)
+)
+  ENGINE = InnoDB;]]></sql>
+  </changeSet>
+  <changeSet id="2012-04-23-01" author="kapralov">
+    <sql><![CDATA[
+      CREATE TABLE cti_user_setting (
+        acl_user_id INTEGER UNSIGNED NOT NULL,
+        dnd TINYINT UNSIGNED NOT NULL DEFAULT 0,
+        cfwd_all TINYINT UNSIGNED NOT NULL DEFAULT 0,
+        cfwd_all_number VARCHAR(16) NULL,
+        cfwd_busy TINYINT UNSIGNED NOT NULL DEFAULT 0,
+        cfwd_busy_number VARCHAR(16) NULL,
+        cfwd_unavailable TINYINT UNSIGNED NOT NULL DEFAULT 0,
+        cfwd_unavailable_number VARCHAR(16) NULL,
+        crec_incoming TINYINT UNSIGNED NOT NULL DEFAULT 0,
+        crec_outgoing TINYINT UNSIGNED NOT NULL DEFAULT 0,
+        crec_internal TINYINT UNSIGNED NOT NULL DEFAULT 0,
+        call_back TINYINT UNSIGNED NOT NULL DEFAULT 0,
+        updated TIMESTAMP NOT NULL,
+        PRIMARY KEY(acl_user_id),
+        INDEX cti_user_setting_FKIndex1(acl_user_id)
+      )
+      ENGINE=InnoDB;]]></sql>
+  </changeSet>
+  <changeSet id="2012-04-25-01" author="kapralov">
+    <sql><![CDATA[
+      ALTER TABLE `acl_rule`
+        ADD COLUMN `updated` TIMESTAMP NOT NULL  AFTER `handle`;]]></sql>
+  </changeSet>
+  <changeSet id="2012-04-25-02" author="kapralov">
+    <sql><![CDATA[
+      UPDATE `acl_rule`
+        SET `updated` = NOW();]]></sql>
+  </changeSet>
+  <changeSet id="2013-04-30-01" author="kapralov">
+    <sql><![CDATA[
+      ALTER TABLE `acl_user`
+          CHANGE COLUMN `created` `created` DATETIME NOT NULL  ,
+          CHANGE COLUMN `updated` `updated` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP;]]></sql>
+  </changeSet>
+  <changeSet id="2013-05-15-01" author="kapralov">
+    <sql><![CDATA[
+      ALTER TABLE `acl_auth_token`
+          CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;]]></sql>
+  </changeSet>
+  <changeSet id="2013-05-15-02" author="kapralov">
+    <sql><![CDATA[
+      ALTER TABLE `acl_rule`
+          CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;]]></sql>
+  </changeSet>
+  <changeSet id="2013-05-15-03" author="kapralov">
+    <sql><![CDATA[
+      ALTER TABLE `acl_user`
+          CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;]]></sql>
+  </changeSet>
+  <changeSet id="2013-05-15-04" author="kapralov">
+    <sql><![CDATA[
+      ALTER TABLE `acl_user_group`
+          CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;]]></sql>
+  </changeSet>
+  <changeSet id="2013-05-15-05" author="kapralov">
+    <sql><![CDATA[
+      ALTER TABLE `acl_user_meta_field`
+          CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;]]></sql>
+  </changeSet>
+  <changeSet id="2013-05-15-06" author="kapralov">
+    <sql><![CDATA[
+      ALTER TABLE `cfg_group_setting`
+          CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;]]></sql>
+  </changeSet>
+  <changeSet id="2013-05-15-07" author="kapralov">
+    <sql><![CDATA[
+      ALTER TABLE `cfg_server_setting`
+          CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;]]></sql>
+  </changeSet>
+  <changeSet id="2013-05-15-08" author="kapralov">
+    <sql><![CDATA[
+      ALTER TABLE `cfg_setting`
+          CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;]]></sql>
+  </changeSet>
+  <changeSet id="2013-05-15-09" author="kapralov">
+    <sql><![CDATA[
+      ALTER TABLE `cfg_user_setting`
+          CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;]]></sql>
+  </changeSet>
+  <changeSet id="2013-05-15-10" author="kapralov">
+    <sql><![CDATA[
+      ALTER TABLE `cfg_user_setting`
+          CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;]]></sql>
+  </changeSet>
+  <changeSet id="2013-06-17-01" author="kapralov">
+    <sql><![CDATA[
+      CREATE  TABLE `ext_web_app` (
+        `id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+        `name` VARCHAR(255) NULL ,
+        `description` VARCHAR(1024) NULL ,
+        `icon` VARCHAR(255) NULL ,
+        `address` VARCHAR(1024) NOT NULL ,
+        `width` INT NULL ,
+        `height` INT NULL ,
+        PRIMARY KEY (`id`) )
+      ENGINE = InnoDB;
+          ]]></sql>
+  </changeSet>
+  <changeSet id="2013-08-20-01" author="kapralov">
+    <sql><![CDATA[
+      CREATE  TABLE `queue` (
+        `id` INT NOT NULL AUTO_INCREMENT ,
+        `name` VARCHAR(255) NULL ,
+        `fullname` VARCHAR(1023) NULL ,
+        `description` VARCHAR(1023) NULL ,
+        `url` VARCHAR(1023) NULL ,
+        PRIMARY KEY (`id`) )
+        ENGINE = InnoDB;]]></sql>
+  </changeSet>
+  <changeSet id="2013-08-21-01" author="kapralov">
+    <sql><![CDATA[
+      ALTER TABLE `queue`
+        CHANGE COLUMN `id` `id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT;]]></sql>
+  </changeSet>
+  <changeSet id="2013-08-21-02" author="kapralov">
+    <sql><![CDATA[
+      CREATE  TABLE `queue_agent` (
+        `queue_id` INTEGER UNSIGNED NOT NULL ,
+        `acl_user_id` INTEGER UNSIGNED NOT NULL ,
+        `penalty` TINYINT NOT NULL DEFAULT 0 ,
+        PRIMARY KEY (`queue_id`, `acl_user_id`) ,
+        INDEX `queue_agent_fk1` (`queue_id`) ,
+        INDEX `queue_agent_fk2` (`acl_user_id`) ,
+        CONSTRAINT `queue_agent_fk1`
+          FOREIGN KEY (`queue_id`)
+          REFERENCES `queue` (`id`)
+          ON DELETE NO ACTION
+          ON UPDATE NO ACTION,
+        CONSTRAINT `queue_agent_fk2`
+          FOREIGN KEY (`acl_user_id`)
+          REFERENCES `acl_user` (`id`)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE)
+        ENGINE = InnoDB;]]></sql>
+  </changeSet>
+  <changeSet id="2013-08-21-03" author="kapralov">
+    <sql><![CDATA[
+      ALTER TABLE `queue`
+        CHANGE COLUMN `name` `name` VARCHAR(255) NOT NULL,
+        ADD UNIQUE INDEX `queue_idx1` (`name` ASC) ;]]></sql>
+  </changeSet>
+  <changeSet id="2013-08-22-01" author="kapralov">
+    <sql><![CDATA[
+      ALTER TABLE `cfg_group_setting`
+        CHANGE COLUMN `value` `val` VARCHAR(1024) NOT NULL DEFAULT '';]]></sql>
+  </changeSet>
+  <changeSet id="2013-08-28-01" author="kapralov">
+    <sql><![CDATA[
+      CREATE  TABLE `contact` (
+        `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
+        `acl_user_id` INT UNSIGNED NOT NULL ,
+        `first_name` VARCHAR(255) NULL ,
+        `middle_name` VARCHAR(255) NULL ,
+        `last_name` VARCHAR(255) NULL ,
+        `note` VARCHAR(1023) NULL ,
+        PRIMARY KEY (`id`) ,
+        INDEX `contact_fk1` (`acl_user_id`) ,
+        CONSTRAINT `contact_fk1`
+          FOREIGN KEY (`acl_user_id`)
+          REFERENCES `acl_user` (`id`)
+          ON DELETE RESTRICT
+          ON UPDATE RESTRICT);]]></sql>
+  </changeSet>
+  <changeSet id="2013-08-28-02" author="kapralov">
+    <sql><![CDATA[
+      CREATE  TABLE `contact_detail` (
+        `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
+        `contact_id` INT UNSIGNED NOT NULL ,
+        `type` TINYINT NOT NULL ,
+        `val` VARCHAR(1023) NOT NULL DEFAULT '',
+        PRIMARY KEY (`id`) ,
+        INDEX `contact_detail_fk1` (`contact_id`) ,
+        CONSTRAINT `contact_detail_fk1`
+          FOREIGN KEY (`contact_id`)
+          REFERENCES `contact` (`id`)
+          ON DELETE RESTRICT
+          ON UPDATE RESTRICT);]]></sql>
+  </changeSet>
+  <changeSet id="2013-10-01-01" author="eiv">
+    <sql><![CDATA[ALTER TABLE `queue` ADD COLUMN `close_on_hangup` INT NULL  AFTER `url` ;]]></sql>
+  </changeSet>
+</databaseChangeLog>

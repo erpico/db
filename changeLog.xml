@@ -105,25 +105,6 @@
       ]]>
     </sql>
   </changeSet>
-  <changeSet id="2014-04-08-01" author="eiv">
-    <sql>
-      <![CDATA[
-          CREATE  TABLE `contact` (
-            `id` INT NOT NULL AUTO_INCREMENT ,
-            `id_user` INT NOT NULL ,
-            `id_user_in_contact_list` INT NOT NULL ,
-            `hidden` TINYINT(1) NOT NULL DEFAULT 1 ,
-            PRIMARY KEY (`id`) );
-      ]]>
-    </sql>
-  </changeSet>
-  <changeSet id="2014-04-08-02" author="eiv">
-    <sql>
-      <![CDATA[
-          drop table `contact`;
-      ]]>
-    </sql>
-  </changeSet>
   <changeSet id="2014-04-08-03" author="eiv">
     <sql>
       <![CDATA[
@@ -206,6 +187,12 @@
           ON DELETE RESTRICT
           ON UPDATE RESTRICT)
       ENGINE = InnoDB;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2014-08-26-01" author="kae">
+    <sql><![CDATA[
+      ALTER TABLE `conversation_message`
+        CHANGE COLUMN `text` `content` VARCHAR(1023) NOT NULL DEFAULT '';
     ]]></sql>
   </changeSet>
 </databaseChangeLog>
