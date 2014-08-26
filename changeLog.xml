@@ -82,13 +82,13 @@
             ]]>
         </sql>
     </changeSet>
-    <!--<changeSet id="2013-12-17-01" author="eiv">-->
-        <!--<sql>-->
-            <!--<![CDATA[-->
-                <!--ALTER TABLE `queue` ADD COLUMN `viq` INT(11) NULL DEFAULT NULL  AFTER `close_on_hangup` ;-->
-            <!--]]>-->
-        <!--</sql>-->
-    <!--</changeSet>-->
+    <changeSet id="2013-12-17-01" author="eiv">
+        <sql>
+            <![CDATA[
+                ALTER TABLE `queue` ADD COLUMN `viq` INT(11) NULL DEFAULT NULL  AFTER `close_on_hangup` ;
+            ]]>
+        </sql>
+    </changeSet>
     <changeSet id="2014-01-07-01" author="kae">
         <sql>
             <![CDATA[
@@ -168,17 +168,17 @@
         INDEX `fk_conversation_acl_user1_idx` (`acl_user_id` ASC) ,
         CONSTRAINT `fk_conversation_external_user1`
           FOREIGN KEY (`external_user_id` )
-          REFERENCES `erpico_messager`.`external_user` (`id` )
+          REFERENCES `external_user` (`id` )
           ON DELETE RESTRICT
           ON UPDATE RESTRICT,
         CONSTRAINT `fk_conversation_acl_user1`
           FOREIGN KEY (`acl_user_id` )
-          REFERENCES `erpico_messager`.`acl_user` (`id` )
+          REFERENCES `acl_user` (`id` )
           ON DELETE RESTRICT
           ON UPDATE RESTRICT,
         CONSTRAINT `fk_conversation_acl_user_group1`
           FOREIGN KEY (`acl_user_group_id` )
-          REFERENCES `erpico_messager`.`acl_user_group` (`id` )
+          REFERENCES `acl_user_group` (`id` )
           ON DELETE RESTRICT
           ON UPDATE RESTRICT)
       ENGINE = InnoDB;
@@ -186,7 +186,7 @@
   </changeSet>
   <changeSet id="2014-08-22-03" author="kae">
     <sql><![CDATA[
-      CREATE  TABLE IF NOT EXISTS `erpico_messager`.`conversation_message` (
+      CREATE  TABLE IF NOT EXISTS `conversation_message` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `conversation_id` INT NOT NULL ,
         `created` DATETIME NULL ,
@@ -197,12 +197,12 @@
         INDEX `fk_conversation_message_acl_user1_idx` (`participant_id` ASC) ,
         CONSTRAINT `fk_conversation_message_conversation1`
           FOREIGN KEY (`conversation_id` )
-          REFERENCES `erpico_messager`.`conversation` (`id` )
+          REFERENCES `conversation` (`id` )
           ON DELETE RESTRICT
           ON UPDATE RESTRICT,
         CONSTRAINT `fk_conversation_message_acl_user1`
           FOREIGN KEY (`participant_id` )
-          REFERENCES `erpico_messager`.`acl_user` (`id` )
+          REFERENCES `acl_user` (`id` )
           ON DELETE RESTRICT
           ON UPDATE RESTRICT)
       ENGINE = InnoDB;
