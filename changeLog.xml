@@ -3,62 +3,58 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd"
                    logicalFilePath="erpico">
-    <changeSet id="2013-10-29-01" author="eiv">
-        <sql><![CDATA[
-            ALTER TABLE `acl_user` ADD COLUMN `application_state` TINYINT(4) ZEROFILL NULL ;
-            ]]>
-        </sql>
-    </changeSet>
-    <changeSet id="2013-10-29-02" author="eiv">
-        <sql><![CDATA[
-            ALTER TABLE `acl_user` ADD COLUMN `last_request` TIMESTAMP NULL ;
-            ]]>
-        </sql>
-    </changeSet>
-    <changeSet id="2013-10-29-03" author="eiv">
-        <sql><![CDATA[
-            ALTER TABLE `chat_message` ADD COLUMN `unread` INT NULL DEFAULT 1 ;
-            ]]>
-        </sql>
-    </changeSet>
-    <changeSet id="2013-10-29-04" author="eiv">
-        <sql><![CDATA[
-            ALTER TABLE `acl_user` CHANGE COLUMN `application_state` `application_state` TINYINT(4) UNSIGNED ZEROFILL NULL DEFAULT 0  ;
-            ]]>
-        </sql>
-    </changeSet>
-    <changeSet id="2013-10-29-05" author="eiv">
-        <sql><![CDATA[
+  <changeSet id="2013-10-29-01" author="eiv">
+    <sql><![CDATA[
+      ALTER TABLE `acl_user` ADD COLUMN `application_state` TINYINT(4) ZEROFILL NULL ;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2013-10-29-02" author="eiv">
+    <sql><![CDATA[
+      ALTER TABLE `acl_user` ADD COLUMN `last_request` TIMESTAMP NULL ;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2013-10-29-03" author="eiv">
+    <sql><![CDATA[
+      ALTER TABLE `chat_message` ADD COLUMN `unread` INT NULL DEFAULT 1 ;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2013-10-29-04" author="eiv">
+    <sql><![CDATA[
+      ALTER TABLE `acl_user` CHANGE COLUMN `application_state` `application_state` TINYINT(4) UNSIGNED ZEROFILL NULL DEFAULT 0  ;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2013-10-29-05" author="eiv">
+    <sql><![CDATA[
             UPDATE acl_user SET application_state = 0 ;
             ]]>
-        </sql>
-    </changeSet>
-    <changeSet id="2013-10-29-06" author="eiv">
-        <sql><![CDATA[
+    </sql>
+  </changeSet>
+  <changeSet id="2013-10-29-06" author="eiv">
+    <sql><![CDATA[
             ALTER TABLE `acl_user` CHANGE COLUMN `application_state` `application_state` TINYINT(4) UNSIGNED ZEROFILL NOT NULL DEFAULT '0000'  ;
             ]]>
-        </sql>
-    </changeSet>
-    <changeSet id="2013-10-29-07" author="eiv">
-        <sql><![CDATA[
+    </sql>
+  </changeSet>
+  <changeSet id="2013-10-29-07" author="eiv">
+    <sql><![CDATA[
             ALTER TABLE `acl_user` CHANGE COLUMN `application_state` `application_state` INT(32) UNSIGNED ZEROFILL NOT NULL DEFAULT 0  ;
             ]]>
-        </sql>
-    </changeSet>
-    <changeSet id="2013-10-30-01" author="eiv">
-        <sql><![CDATA[
+    </sql>
+  </changeSet>
+  <changeSet id="2013-10-30-01" author="eiv">
+    <sql><![CDATA[
             INSERT INTO `cfg_server_setting` (`id`, `handle`, `val`, `updated`) VALUES ('202', 'user.presence.ttl', '60000', '2013-10-30 12:55:22');
             ]]>
-        </sql>
-    </changeSet>
-    <changeSet id="2013-11-14-01" author="eiv">
-        <sql><![CDATA[
+    </sql>
+  </changeSet>
+  <changeSet id="2013-11-14-01" author="eiv">
+    <sql><![CDATA[
             ALTER TABLE `chat_message` DROP COLUMN `is_new_id` ;
         ]]>
-        </sql>
-    </changeSet>
-    <changeSet id="2013-11-14-02" author="eiv">
-        <sql><![CDATA[
+    </sql>
+  </changeSet>
+  <changeSet id="2013-11-14-02" author="eiv">
+    <sql><![CDATA[
             CREATE  TABLE `chat_task` (
                 `id` INT(10) UNSIGNED NOT NULL ,
                 `dateEnd` TIMESTAMP NULL ,
@@ -66,38 +62,38 @@
                 ENGINE = InnoDB
                 DEFAULT CHARACTER SET = utf8;
             ]]>
-        </sql>
-    </changeSet>
-    <changeSet id="2013-11-27-01" author="eiv">
-        <sql>
-            <![CDATA[
+    </sql>
+  </changeSet>
+  <changeSet id="2013-11-27-01" author="eiv">
+    <sql>
+      <![CDATA[
             ALTER TABLE `chat_task` ADD COLUMN `prioritiyTask` INT NOT NULL DEFAULT 1  AFTER `dateEnd` ;
             ]]>
-        </sql>
-    </changeSet>
-    <changeSet id="2013-11-29-01" author="eiv">
-        <sql>
-            <![CDATA[
+    </sql>
+  </changeSet>
+  <changeSet id="2013-11-29-01" author="eiv">
+    <sql>
+      <![CDATA[
             ALTER TABLE `chat_task` ADD COLUMN `taskStatus` INT(11) NULL DEFAULT -1  AFTER `prioritiyTask` ;
             ]]>
-        </sql>
-    </changeSet>
-    <changeSet id="2013-12-17-01" author="eiv">
-        <sql>
-            <![CDATA[
+    </sql>
+  </changeSet>
+  <changeSet id="2013-12-17-01" author="eiv">
+    <sql>
+      <![CDATA[
                 ALTER TABLE `queue` ADD COLUMN `viq` INT(11) NULL DEFAULT NULL  AFTER `close_on_hangup` ;
             ]]>
-        </sql>
-    </changeSet>
-    <changeSet id="2014-01-07-01" author="kae">
-        <sql>
-            <![CDATA[
+    </sql>
+  </changeSet>
+  <changeSet id="2014-01-07-01" author="kae">
+    <sql>
+      <![CDATA[
                 ALTER TABLE `cfg_group_setting`
                   DROP INDEX `cfg_group_setting_idx_handle`,
                   ADD UNIQUE INDEX `cfg_group_setting_idx_handle` (`acl_user_group_id` ASC, `handle` ASC) ;
             ]]>
-        </sql>
-    </changeSet>
+    </sql>
+  </changeSet>
   <changeSet id="2014-21-07-01" author="eiv">
     <sql>
       <![CDATA[
@@ -199,6 +195,18 @@
     <sql><![CDATA[
       ALTER TABLE `external_user`
         ADD UNIQUE INDEX `uid_idx` (`uid` ASC) ;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2014-08-27-01" author="kae">
+    <sql><![CDATA[
+      ALTER TABLE `conversation`
+        ADD COLUMN `created` DATETIME NOT NULL  AFTER `acl_user_group_id` ;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2014-08-27-02" author="kae">
+    <sql><![CDATA[
+      ALTER TABLE `conversation_message`
+        CHANGE COLUMN `created` `created` DATETIME NOT NULL ;
     ]]></sql>
   </changeSet>
 </databaseChangeLog>
