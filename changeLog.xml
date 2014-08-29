@@ -209,14 +209,10 @@
         CHANGE COLUMN `created` `created` DATETIME NOT NULL ;
     ]]></sql>
   </changeSet>
-  <changeSet id="2014-08-28" author="eiv">
+  <changeSet id="2014-08-29-01" author="eiv">
     <sql>
       <![CDATA[
-        ALTER TABLE `conversation` DROP FOREIGN KEY `fk_conversation_acl_user1` ;
-        ALTER TABLE `conversation` CHANGE COLUMN `acl_user_id` `acl_user_id` INT(10) UNSIGNED NULL  , ADD COLUMN `state` TINYINT(1) NOT NULL DEFAULT 0  AFTER `archived` ,
-          ADD CONSTRAINT `fk_conversation_acl_user1`
-          FOREIGN KEY (`acl_user_id` )
-          REFERENCES `acl_user` (`id` );
+        ALTER TABLE `conversation` CHANGE COLUMN `acl_user_id` `acl_user_id` INT(10) UNSIGNED NULL  , ADD COLUMN `state` TINYINT(1) NOT NULL DEFAULT 0  AFTER `archived`;
       ]]>
     </sql>
   </changeSet>
