@@ -199,4 +199,9 @@
   <changeSet id="2013-10-01-01" author="eiv">
     <sql><![CDATA[ALTER TABLE `queue` ADD COLUMN `close_on_hangup` INT NULL  AFTER `url` ;]]></sql>
   </changeSet>
+  <changeSet id="2014-08-30-01" author="kae">
+    <sql><![CDATA[
+      ALTER TABLE `queue` ADD COLUMN `hidden` TINYINT(1) NOT NULL DEFAULT 0 AFTER `viq` ;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
