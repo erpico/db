@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd"
+                   logicalFilePath="erpico_crm">
+  <changeSet id="2014-07-17-01" author="kae">
+    <sql><![CDATA[
+      ALTER TABLE `sms_pool` CHANGE COLUMN `message_id` `message_id` VARCHAR(127) NOT NULL DEFAULT '0';
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2014-07-17-02" author="kae">
+    <sql><![CDATA[
+      ALTER TABLE `sms_in` CHANGE COLUMN `message_id` `message_id` VARCHAR(127) NOT NULL DEFAULT '0'  ;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2014-07-17-03" author="kae">
+    <sql><![CDATA[
+      CREATE TABLE `order_call_history` (
+        `id` int(11) NOT NULL AUTO_INCREMENT,
+        `order_id` int(11) NOT NULL,
+        `call_id` bigint(20) NOT NULL,
+        `created` datetime NOT NULL,
+        PRIMARY KEY (`id`)
+      );
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2014-07-17-04" author="kae">
+    <sql><![CDATA[
+      INSERT INTO `cfg_setting` (`handle`, `val`) VALUES ('crm.map.enabled', '0');
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2014-07-17-05" author="mrk">
+    <sql><![CDATA[
+      CREATE TABLE `taxi_city_services` (
+        `city_id` int(10) NOT NULL,
+        `service_id` int(10) NOT NULL,
+        PRIMARY KEY (`city_id`,`service_id`)
+      );
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2014-07-17-06" author="mrk">
+    <sql>
+      <![CDATA[
+      ALTER TABLE `taxi_prices` 
+        ADD COLUMN `city_id` INT(10) NOT NULL AFTER `service_id`,
+        DROP PRIMARY KEY,
+        ADD PRIMARY KEY (`service_id`, `city_id`, `class_id`);
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2014-07-17-07" author="mrk">
+    <sql>
+      <![CDATA[
+      SELECT @val := val+0 FROM `cfg_setting` where `handle` = 'crm.city.id';
+
+      UPDATE `taxi_prices` SET `city_id` = SUBSTRING_INDEX(@val, ';', 1);
+
+      insert into `taxi_city_services` (`city_id`, `service_id`) select SUBSTRING_INDEX(@val, ';', 1), `id` from `taxi_service` where `id` > 6;
+    ]]>
+    </sql>
+  </changeSet>
+</databaseChangeLog>
