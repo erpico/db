@@ -213,4 +213,21 @@
         ADD UNIQUE INDEX `uk_billing_account_kind_owner_type` (`kind` ASC, `owner_id` ASC, `type_id` ASC) ;
     ]]></sql>
   </changeSet>
+  <changeSet id="2014-09-02-11" author="kae">
+    <sql><![CDATA[
+      ALTER TABLE `billing_account`
+        ADD INDEX `idx_billing_account_kind_owner` (`kind` ASC, `owner_id` ASC) ;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2014-09-02-12" author="kae">
+    <sql><![CDATA[
+      ALTER TABLE `client_billing_rule`
+        ADD UNIQUE INDEX `uk_client_billing_rule_action` (`action` ASC) ;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2014-09-02-13" author="kae">
+    <sql><![CDATA[
+      ALTER TABLE `clients` DROP COLUMN `balans`;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
