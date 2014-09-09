@@ -204,4 +204,18 @@
       ALTER TABLE `queue` ADD COLUMN `hidden` TINYINT(1) NOT NULL DEFAULT 0 AFTER `viq` ;
     ]]></sql>
   </changeSet>
+  <changeSet id="2014-09-08-01" author="kae">
+    <sql><![CDATA[
+      CREATE  TABLE `outgoing_campaign_dial_result_setting` (
+        `campaign_id` INT(11) NOT NULL ,
+        `result` TINYINT(2) NOT NULL ,
+        `pause` INT NULL ,
+        `pause_time` INT NULL ,
+        `stop` TINYINT(1) NULL ,
+        `postpone_for` INT NULL ,
+        `postpone_to` DATETIME NULL ,
+        PRIMARY KEY (`campaign_id`, `result`) ,
+        INDEX `fk_outgoing_campaign_dial_result_setting_id_idx` (`campaign_id` ASC));
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
