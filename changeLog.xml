@@ -238,4 +238,12 @@
       ]]>
     </sql>
   </changeSet>
+  <changeSet id="2014-09-15-01" author="kae">
+    <sql><![CDATA[
+      CREATE  TABLE `acl_license` (
+        `id` INT NOT NULL AUTO_INCREMENT ,
+        `value` VARCHAR(2048) NOT NULL ,
+         PRIMARY KEY (`id`));
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
