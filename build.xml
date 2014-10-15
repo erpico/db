@@ -14,21 +14,79 @@
   <taskdef resource="liquibasetasks.properties" classpathref="tool.classpath"/>
 
   <target name="migrate">
-    <fail unless="db.production.changelog.file">db.production.changelog.file not set</fail>
+    <fail unless="erpico.db.changelog.file">erpico.db.changelog.file not set</fail>
 
-    <fail unless="db.production.driver">db.production.driver not set</fail>
-    <fail unless="db.production.url">db.production.url not set</fail>
-    <fail unless="db.production.user">db.production.user not set</fail>
-    <fail unless="db.production.password">db.production.password not set</fail>
+    <fail unless="db.core.driver">db.core.driver not set</fail>
+    <fail unless="db.core.url">db.core.url not set</fail>
+    <fail unless="db.core.user">db.core.user not set</fail>
+    <fail unless="db.core.password">db.core.password not set</fail>
 
     <updateDatabase
-        changelogfile="${db.production.changelog.file}"
-        driver="${db.production.driver}"
-        url="${db.production.url}"
-        username="${db.production.user}"
-        password="${db.production.password}"
+        changelogfile="${db.core.changelog}"
+        driver="${db.core.driver}"
+        url="${db.core.url}"
+        username="${db.core.user}"
+        password="${db.core.password}"
         classpathref="tool.classpath"
-      />
+        />
+  </target>
+
+  <target name="migrate.crm">
+    <fail unless="db.crm.driver">db.crm.driver not set</fail>
+    <fail unless="db.crm.url">db.crm.url not set</fail>
+    <fail unless="db.crm.user">db.crm.user not set</fail>
+    <fail unless="db.crm.password">db.crm.password not set</fail>
+    <fail unless="db.core.changelog">db.core.changelog not set</fail>
+    <fail unless="db.crm.changelog">db.crm.changelog not set</fail>
+
+    <echo message="${db.crm.url}"/>
+
+    <echo message="${db.core.changelog}"/>
+    <updateDatabase
+        changelogfile="${db.core.changelog}"
+        driver="${db.crm.driver}"
+        url="${db.crm.url}"
+        username="${db.crm.user}"
+        password="${db.crm.password}"
+        classpathref="tool.classpath"/>
+
+    <echo message="${db.crm.changelog}"/>
+    <updateDatabase
+        changelogfile="${db.crm.changelog}"
+        driver="${db.crm.driver}"
+        url="${db.crm.url}"
+        username="${db.crm.user}"
+        password="${db.crm.password}"
+        classpathref="tool.classpath"/>
+  </target>
+
+  <target name="migrate.phc">
+    <fail unless="db.phc.driver">db.phc.driver not set</fail>
+    <fail unless="db.phc.url">db.phc.url not set</fail>
+    <fail unless="db.phc.user">db.phc.user not set</fail>
+    <fail unless="db.phc.password">db.phc.password not set</fail>
+    <fail unless="db.core.changelog">db.core.changelog not set</fail>
+    <fail unless="db.phc.changelog">db.phc.changelog not set</fail>
+
+    <echo message="${db.phc.url}"/>
+
+    <echo message="${db.core.changelog}"/>
+    <updateDatabase
+        changelogfile="${db.core.changelog}"
+        driver="${db.phc.driver}"
+        url="${db.phc.url}"
+        username="${db.phc.user}"
+        password="${db.phc.password}"
+        classpathref="tool.classpath"/>
+
+    <echo message="${db.phc.changelog}"/>
+    <updateDatabase
+        changelogfile="${db.phc.changelog}"
+        driver="${db.phc.driver}"
+        url="${db.phc.url}"
+        username="${db.phc.user}"
+        password="${db.phc.password}"
+        classpathref="tool.classpath"/>
   </target>
 
 </project>
