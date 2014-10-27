@@ -253,3 +253,106 @@ CREATE  TABLE `chat_message` (
   PRIMARY KEY (`id`) 
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 
+CREATE TABLE `outgouing_company` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `user_id` int(11) NOT NULL,
+  `tm_created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `name` varchar(128) NOT NULL,
+  `description` text NOT NULL,
+  `state` tinyint(4) NOT NULL,
+  `is_locked` tinyint(4) NOT NULL DEFAULT '0',
+  `date_start` date NOT NULL,
+  `date_finish` date NOT NULL,
+  `time_start` time NOT NULL,
+  `time_finish` time NOT NULL,
+  `is_pause_on_day_off` tinyint(4) NOT NULL DEFAULT '0',
+  `is_restart_on_day_start` tinyint(4) NOT NULL DEFAULT '0',
+  `answer_timeout` int(11) NOT NULL DEFAULT '60',
+  `call_tries` int(11) NOT NULL DEFAULT '1',
+  `pause_after_conversation` int(11) NOT NULL DEFAULT '1',
+  `pause_after_try` int(11) NOT NULL DEFAULT '10',
+  `action` tinyint(2) NOT NULL DEFAULT '0',
+  `action_value` varchar(64) NOT NULL DEFAULT '',
+  `last_conversation` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `concurrent_calls_limit` int(11) NOT NULL DEFAULT '0',
+  `call_duration_limit` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251 ROW_FORMAT=DYNAMIC;
+
+CREATE TABLE `calls` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `asteriskId` varchar(32) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `userId` int(11) NOT NULL DEFAULT '0',
+  `type` tinyint(4) NOT NULL DEFAULT '0',
+  `state` tinyint(4) NOT NULL DEFAULT '0',
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `tm_created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `tm_rbt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `tm_bridged` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `tm_done` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `caller` varchar(16) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `called` varchar(16) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `rbt_duration` int(11) NOT NULL DEFAULT '0',
+  `duration` int(11) NOT NULL DEFAULT '0',
+  `fn_mixmonitor` varchar(255) NOT NULL DEFAULT '',
+  `hangup_cause` varchar(128) NOT NULL DEFAULT '',
+  `hangup_code` int(11) NOT NULL DEFAULT '0',
+  `q850_code` int(11) NOT NULL DEFAULT '0',
+  `q850_reason` varchar(128) NOT NULL DEFAULT '',
+  `sip_call_id` varchar(255) NOT NULL DEFAULT '',
+  `qos` varchar(255) NOT NULL DEFAULT '',
+  `dialstatus` varchar(32) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `called` (`called`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE `outgouing_company_callerid` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `outgouing_company_id` int(11) DEFAULT NULL,
+  `callerid` varchar(45) DEFAULT NULL,
+  `order` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `outgouing_company_contacts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `outgouing_company_id` int(11) NOT NULL,
+  `order` int(11) NOT NULL DEFAULT '0',
+  `phone` varchar(64) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `state` tinyint(4) NOT NULL DEFAULT '0',
+  `tries` int(11) NOT NULL DEFAULT '0',
+  `last_call` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `dial_result` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`,`outgouing_company_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251 ROW_FORMAT=DYNAMIC;
+
+CREATE TABLE `outgouing_company_contacts_calls` (
+  `call_id` int(11) NOT NULL AUTO_INCREMENT,
+  `contact_id` int(11) NOT NULL,
+  `company_id` int(11) NOT NULL,
+  PRIMARY KEY (`call_id`),
+  UNIQUE KEY `contact_id` (`contact_id`,`company_id`,`call_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251 ROW_FORMAT=FIXED;
+
+CREATE TABLE `outgouing_company_weekdays` (
+  `outgouing_company_id` int(11) NOT NULL,
+  `weekday_id` int(11) NOT NULL,
+  PRIMARY KEY (`outgouing_company_id`,`weekday_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251 ROW_FORMAT=FIXED;
+
+CREATE TABLE `sip_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tm` datetime NOT NULL,
+  `sip_call_id` varchar(256) NOT NULL,
+  `addr` varchar(32) NOT NULL,
+  `data` varchar(2048) NOT NULL,
+  `direction` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+
