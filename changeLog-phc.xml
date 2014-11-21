@@ -27,5 +27,11 @@
       ALTER TABLE `outgouing_company` 
         ADD COLUMN `min_call_time` INT(11) NULL DEFAULT NULL AFTER `action_value`;
     ]]></sql>
+  </changeSet>  
+  <changeSet id="2014-11-21-01" author="kae">
+    <sql><![CDATA[
+      ALTER TABLE `outgouing_company` 
+        ADD COLUMN `deleted` TINYINT(1) NOT NULL DEFAULT 0 AFTER `call_duration_limit`;
+    ]]></sql>
   </changeSet>
 </databaseChangeLog>
