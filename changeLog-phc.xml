@@ -34,4 +34,9 @@
         ADD COLUMN `deleted` TINYINT(1) NOT NULL DEFAULT 0 AFTER `call_duration_limit`;
     ]]></sql>
   </changeSet>
+  <changeSet id="2015-03-04-01" author="rap">
+    <sql><![CDATA[
+      REPLACE `cfg_setting` (`handle`, `val`) VALUES ('cti.show_welcome', '0');
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
