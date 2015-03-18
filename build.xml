@@ -14,12 +14,15 @@
   <taskdef resource="liquibasetasks.properties" classpathref="tool.classpath"/>
 
   <target name="migrate">
-    <fail unless="erpico.db.changelog.file">erpico.db.changelog.file not set</fail>
+    <fail unless="db.core.changelog">db.core.changelog not set</fail>
 
     <fail unless="db.core.driver">db.core.driver not set</fail>
     <fail unless="db.core.url">db.core.url not set</fail>
     <fail unless="db.core.user">db.core.user not set</fail>
     <fail unless="db.core.password">db.core.password not set</fail>
+
+    <echo message="${db.core.url}"/>
+    <echo message="${db.core.changelog}"/>
 
     <updateDatabase
         changelogfile="${db.core.changelog}"
