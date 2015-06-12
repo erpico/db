@@ -159,4 +159,9 @@
       REPLACE `cfg_setting` (`handle`, `val`) VALUES ('cti.show_welcome', '0');
     ]]></sql>
   </changeSet>
+  <changeSet id="2015-06-10-01" author="rp">
+    <sql><![CDATA[
+	INSERT INTO `acl_rule` (`name`, `handle`) VALUES ('Исходящие кампании', 'phc.oc');
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
