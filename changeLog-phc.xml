@@ -164,4 +164,9 @@
 	INSERT INTO `acl_rule` (`name`, `handle`) VALUES ('Исходящие кампании', 'phc.oc');
     ]]></sql>
   </changeSet>
+  <changeSet id="2015-06-22-01" author="rp">
+    <sql><![CDATA[
+	INSERT INTO `acl_rule` (`name`, `handle`) VALUES ('Администратор АТС', 'phc.admin');
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
