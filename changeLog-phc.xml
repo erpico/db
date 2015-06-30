@@ -174,4 +174,14 @@
 	INSERT INTO `acl_rule` (`name`, `handle`) VALUES ('Erpico Admin', 'erpico.admin');
     ]]></sql>
   </changeSet>
+  <changeSet id="2015-06-29-02" author="rp">
+    <sql><![CDATA[
+	INSERT INTO `acl_rule` (`name`, `handle`) VALUES ('Отчеты в телефонном клиенте', 'phc.reports');
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2015-06-29-03" author="rp">
+    <sql><![CDATA[
+	ALTER TABLE `acl_auth_token` CHANGE COLUMN `issued` `issued` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00' ;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
