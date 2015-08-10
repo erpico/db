@@ -184,4 +184,10 @@
 	ALTER TABLE `acl_auth_token` CHANGE COLUMN `issued` `issued` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00' ;
     ]]></sql>
   </changeSet>
+  <changeSet id="2015-08-10-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `queue`
+        ADD COLUMN `service_id` INT NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
