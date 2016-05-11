@@ -1,5 +1,4 @@
 <project name="erpico-db" default="migrate" basedir=".">
-  <property file="${basedir}/build.properties"/>
   <property name="lib.dir" value="${basedir}/lib"/>
 
   <!-- Ant classpath -->
@@ -14,81 +13,78 @@
   <taskdef resource="liquibasetasks.properties" classpathref="tool.classpath"/>
 
   <target name="migrate">
-    <fail unless="db.core.changelog">db.core.changelog not set</fail>
+    <fail unless="erpico.db_host">erpico.db_host not set</fail>
+    <fail unless="erpico.db_port">erpico.db_port not set</fail>
+    <fail unless="erpico.db_schema">erpico.db_schema not set</fail>
+    <fail unless="erpico.db_user">erpico.db_user not set</fail>
+    <fail unless="erpico.db_password">erpico.db_password not set</fail>
 
-    <fail unless="db.core.driver">db.core.driver not set</fail>
-    <fail unless="db.core.url">db.core.url not set</fail>
-    <fail unless="db.core.user">db.core.user not set</fail>
-    <fail unless="db.core.password">db.core.password not set</fail>
-
-    <echo message="${db.core.url}"/>
-    <echo message="${db.core.changelog}"/>
+    <echo message="${erpico.db_host}:${erpico.db_port}/${erpico.db_schema}"/>
+    <echo message="${basedir}/changeLog.xml"/>
 
     <updateDatabase
-        changelogfile="${db.core.changelog}"
-        driver="${db.core.driver}"
-        url="${db.core.url}"
-        username="${db.core.user}"
-        password="${db.core.password}"
+        changelogfile="${basedir}/changeLog.xml"
+        driver="com.mysql.jdbc.Driver"
+        url="jdbc:mysql://${erpico.db_host}:${erpico.db_port}/${erpico.db_schema}?encoding=UTF-8&amp;useUnicode=true&amp;characterEncoding=UTF-8"
+        username="${erpico.db_user}"
+        password="${erpico.db_password}"
         classpathref="tool.classpath"
         />
   </target>
 
   <target name="migrate.crm">
-    <fail unless="db.crm.driver">db.crm.driver not set</fail>
-    <fail unless="db.crm.url">db.crm.url not set</fail>
-    <fail unless="db.crm.user">db.crm.user not set</fail>
-    <fail unless="db.crm.password">db.crm.password not set</fail>
-    <fail unless="db.core.changelog">db.core.changelog not set</fail>
-    <fail unless="db.crm.changelog">db.crm.changelog not set</fail>
+    <fail unless="erpico.db_host">erpico.db_host not set</fail>
+    <fail unless="erpico.db_port">erpico.db_port not set</fail>
+    <fail unless="erpico.db_schema">erpico.db_schema not set</fail>
+    <fail unless="erpico.db_user">erpico.db_user not set</fail>
+    <fail unless="erpico.db_password">erpico.db_password not set</fail>
+    
+    <echo message="${erpico.db_host}:${erpico.db_port}/${erpico.db_schema}"/>
 
-    <echo message="${db.crm.url}"/>
-
-    <echo message="${db.core.changelog}"/>
+    <echo message="${basedir}/changeLog.xml"/>
     <updateDatabase
-        changelogfile="${db.core.changelog}"
-        driver="${db.crm.driver}"
-        url="${db.crm.url}"
-        username="${db.crm.user}"
-        password="${db.crm.password}"
+        changelogfile="${basedir}/changeLog.xml"
+        driver="com.mysql.jdbc.Driver"
+        url="jdbc:mysql://${erpico.db_host}:${erpico.db_port}/${erpico.db_schema}?encoding=UTF-8&amp;useUnicode=true&amp;characterEncoding=UTF-8"
+        username="${erpico.db_user}"
+        password="${erpico.db_password}"
         classpathref="tool.classpath"/>
 
-    <echo message="${db.crm.changelog}"/>
+    <echo message="${basedir}/changeLog-crm.xml"/>
     <updateDatabase
-        changelogfile="${db.crm.changelog}"
-        driver="${db.crm.driver}"
-        url="${db.crm.url}"
-        username="${db.crm.user}"
-        password="${db.crm.password}"
+        changelogfile="${basedir}/changeLog-crm.xml"
+        driver="com.mysql.jdbc.Driver"
+        url="jdbc:mysql://${erpico.db_host}:${erpico.db_port}/${erpico.db_schema}?encoding=UTF-8&amp;useUnicode=true&amp;characterEncoding=UTF-8"
+        username="${erpico.db_user}"
+        password="${erpico.db_password}"
         classpathref="tool.classpath"/>
   </target>
 
   <target name="migrate.phc">
-    <fail unless="db.phc.driver">db.phc.driver not set</fail>
-    <fail unless="db.phc.url">db.phc.url not set</fail>
-    <fail unless="db.phc.user">db.phc.user not set</fail>
-    <fail unless="db.phc.password">db.phc.password not set</fail>
-    <fail unless="db.core.changelog">db.core.changelog not set</fail>
-    <fail unless="db.phc.changelog">db.phc.changelog not set</fail>
+    <fail unless="erpico.db_host">erpico.db_host not set</fail>
+    <fail unless="erpico.db_port">erpico.db_port not set</fail>
+    <fail unless="erpico.db_schema">erpico.db_schema not set</fail>
+    <fail unless="erpico.db_user">erpico.db_user not set</fail>
+    <fail unless="erpico.db_password">erpico.db_password not set</fail>
 
-    <echo message="${db.phc.url}"/>
+    <echo message="${erpico.db_host}:${erpico.db_port}/${erpico.db_schema}"/>
 
-    <echo message="${db.core.changelog}"/>
+    <echo message="${basedir}/changeLog.xml"/>
     <updateDatabase
-        changelogfile="${db.core.changelog}"
-        driver="${db.phc.driver}"
-        url="${db.phc.url}"
-        username="${db.phc.user}"
-        password="${db.phc.password}"
+        changelogfile="${basedir}/changeLog.xml"
+        driver="com.mysql.jdbc.Driver"
+        url="jdbc:mysql://${erpico.db_host}:${erpico.db_port}/${erpico.db_schema}?encoding=UTF-8&amp;useUnicode=true&amp;characterEncoding=UTF-8"
+        username="${erpico.db_user}"
+        password="${erpico.db_password}"
         classpathref="tool.classpath"/>
 
-    <echo message="${db.phc.changelog}"/>
+    <echo message="${basedir}/changeLog-phc.xml"/>
     <updateDatabase
-        changelogfile="${db.phc.changelog}"
-        driver="${db.phc.driver}"
-        url="${db.phc.url}"
-        username="${db.phc.user}"
-        password="${db.phc.password}"
+        changelogfile="${basedir}/changeLog-phc.xml"
+        driver="com.mysql.jdbc.Driver"
+        url="jdbc:mysql://${erpico.db_host}:${erpico.db_port}/${erpico.db_schema}?encoding=UTF-8&amp;useUnicode=true&amp;characterEncoding=UTF-8"
+        username="${erpico.db_user}"
+        password="${erpico.db_password}"
         classpathref="tool.classpath"/>
   </target>
 
