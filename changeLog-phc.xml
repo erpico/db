@@ -195,4 +195,28 @@
       REPLACE `cfg_setting` (`handle`, `val`) VALUES ('cti.autoanswer', '0');
     ]]></sql>
   </changeSet>
+    </changeSet>
+    <changeSet id="2016-07-05-01" author="dev1">
+    <sql><![CDATA[
+    CREATE TABLE IF NOT EXISTS `queue_log`
+      (
+        `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+        `time` varchar(32) NOT NULL DEFAULT '0',
+        `callid` varchar(32) NOT NULL DEFAULT '',
+        `cdr_uniqueid` varchar(32) NOT NULL DEFAULT '',
+        `queuename` varchar(32) NOT NULL DEFAULT '',
+        `agent` varchar(32) NOT NULL DEFAULT '',
+        `event` varchar(32) NOT NULL DEFAULT '',
+        `data` varchar(255) NOT NULL DEFAULT '',
+        `data1` varchar(100) NOT NULL DEFAULT '',
+        `data2` varchar(100) NOT NULL DEFAULT '',
+        `data3` varchar(100) NOT NULL DEFAULT '',
+        `data4` varchar(100) NOT NULL DEFAULT '',
+        `data5` varchar(20) NOT NULL DEFAULT '',
+        `time_add` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        PRIMARY KEY (`id`)
+      ) 
+      ENGINE=MyISAM AUTO_INCREMENT=2513552 DEFAULT CHARSET=utf8;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
