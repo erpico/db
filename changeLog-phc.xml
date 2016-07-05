@@ -190,4 +190,9 @@
         ADD COLUMN `service_id` INT NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
+    <changeSet id="2016-07-04-01" author="dev1">
+    <sql><![CDATA[
+      REPLACE `cfg_setting` (`handle`, `val`) VALUES ('cti.autoanswer', '0');
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
