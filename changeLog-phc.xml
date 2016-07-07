@@ -195,7 +195,6 @@
       REPLACE `cfg_setting` (`handle`, `val`) VALUES ('cti.autoanswer', '0');
     ]]></sql>
   </changeSet>
-    </changeSet>
     <changeSet id="2016-07-05-01" author="dev1">
     <sql><![CDATA[
     CREATE TABLE IF NOT EXISTS `queue_log`
@@ -223,4 +222,5 @@
     <sql><![CDATA[
       ALTER TABLE `outgouing_company_contacts` ADD COLUMN `sheduled_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
     ]]></sql>
+  </changeSet>
 </databaseChangeLog>
