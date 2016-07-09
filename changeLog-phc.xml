@@ -220,7 +220,7 @@
   </changeSet>
     <changeSet id="2016-07-07-01" author="dev1">
     <sql><![CDATA[
-      ALTER TABLE `outgouing_company_contacts` ADD COLUMN `sheduled_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
+      ALTER TABLE `outgouing_company_contacts` ADD COLUMN `sсheduled_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
     ]]></sql>
   </changeSet>
     <changeSet id="2016-07-07-02" author="rp">
