@@ -223,10 +223,15 @@
       ALTER TABLE `outgouing_company_contacts` ADD COLUMN `sheduled_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
     ]]></sql>
   </changeSet>
-    <changeSet id="2016-07-07-02" author="rp">
+  <changeSet id="2016-07-07-02" author="rp">
     <sql><![CDATA[
       ALTER TABLE `outgouing_company_contacts` DROP COLUMN `sheduled_time`;
       ALTER TABLE `outgouing_company_contacts` ADD COLUMN `scheduled_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-05-23-01" author="rp">
+    <sql><![CDATA[
+      ALTER TABLE `queue_cdr` ADD COLUMN `ringtime` INT UNSIGNED NOT NULL DEFAULT 0 AFTER `talktime`;
     ]]></sql>
   </changeSet>
 </databaseChangeLog>
