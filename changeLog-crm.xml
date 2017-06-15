@@ -1859,7 +1859,7 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       INSERT INTO `params` (id, value, name) values ('131', '0', 'AUTO_TTS_CAR_INTERVAL_BEFORE');
     ]]></sql>
   </changeSet>
-  <changeSet id="2017-06-15-01" author="rp">
+  <changeSet id="2017-06-15-02" author="rp">
     <sql><![CDATA[
       CREATE TABLE `drivers_auth_token` (
         `driver_id` int(11) NOT NULL,
