@@ -1887,4 +1887,9 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       INSERT INTO `params` (id, value, name) values ('132', '', 'WEB_PLATFORM_URI');
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-06-28-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `vehicle` ADD COLUMN imei VARCHAR(32) NOT NULL DEFAULT '';
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
