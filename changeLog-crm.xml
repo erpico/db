@@ -1871,7 +1871,7 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
     ]]></sql>
   </changeSet>
-  <changeSet id="2017-06-15-02" author="rp">
+  <changeSet id="2017-06-16-01" author="rp">
     <sql><![CDATA[
       CREATE TABLE `short_links` (
         `id` INT NOT NULL AUTO_INCREMENT,
