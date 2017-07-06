@@ -1912,4 +1912,28 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `zakazi_online` ADD COLUMN assigned_bus INT UNSIGNED NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-07-06-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE  `services_citys`
+        ADD COLUMN `entity`          VARCHAR(512) NOT NULL DEFAULT '',
+        ADD COLUMN `account`         VARCHAR(128) NOT NULL DEFAULT '',
+        ADD COLUMN `licence`         VARCHAR(512) NOT NULL DEFAULT '',
+        ADD COLUMN `org_card`        VARCHAR(512) NOT NULL DEFAULT '',
+        ADD COLUMN `company_charter` VARCHAR(512) NOT NULL DEFAULT '',
+		ADD COLUMN `phone`           VARCHAR(512) NOT NULL DEFAULT '',
+		ADD COLUMN `phone_for_sms`   VARCHAR(512) NOT NULL DEFAULT '';
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-07-06-02" author="dev1">
+    <sql><![CDATA[
+	  CREATE TABLE IF NOT EXISTS `services_addresses`
+	  (
+	    `id`         INT UNSIGNED NOT NULL AUTO_INCREMENT,
+		`service_id` INT UNSIGNED NOT NULL DEFAULT 0,
+        `address` VARCHAR(512) NOT NULL DEFAULT '',
+		PRIMARY KEY (`id`),
+	    INDEX `service_id_idx` (`service_id` ASC)		
+	  ) ENGINE=MyISAM DEFAULT CHARSET=utf8; 
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
