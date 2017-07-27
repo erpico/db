@@ -1946,4 +1946,10 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `zakazi_archive` ADD COLUMN btone_cancellation_send INT UNSIGNED NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-07-26-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `drivers_auth_token` MODIFY COLUMN `updated` DATETIME DEFAULT '0000-00-00 00:00:00',
+	                                   MODIFY COLUMN `expire`  DATETIME DEFAULT '0000-00-00 00:00:00';
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
