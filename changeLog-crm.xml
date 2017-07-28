@@ -1952,4 +1952,11 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 	                                   MODIFY COLUMN `expire`  DATETIME DEFAULT '0000-00-00 00:00:00';
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-07-28-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `vehicle` ADD COLUMN passengers_insurance VARCHAR(128) NOT NULL DEFAULT '',
+	                        ADD COLUMN osago                VARCHAR(128) NOT NULL DEFAULT '',
+					        ADD COLUMN vehicle_certificate     VARCHAR(128) NOT NULL DEFAULT '';
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
