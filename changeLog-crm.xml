@@ -1956,7 +1956,7 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
     <sql><![CDATA[
       ALTER TABLE `vehicle` ADD COLUMN passengers_insurance VARCHAR(128) NOT NULL DEFAULT '',
 	                        ADD COLUMN osago                VARCHAR(128) NOT NULL DEFAULT '',
-					        ADD COLUMN vehicle_certificate     VARCHAR(128) NOT NULL DEFAULT '';
+					        ADD COLUMN vehicle_certificate  VARCHAR(128) NOT NULL DEFAULT '';
     ]]></sql>
   </changeSet>
 </databaseChangeLog>
