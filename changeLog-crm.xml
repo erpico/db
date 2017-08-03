@@ -1969,4 +1969,11 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `zakazi_archive` ADD COLUMN order_changed INT UNSIGNED NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-08-02-03" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `vodils`  ADD COLUMN driver_licence      VARCHAR(128) NOT NULL DEFAULT '',
+	                        ADD COLUMN passenger_insurance VARCHAR(128) NOT NULL DEFAULT '',
+					        ADD COLUMN medical_certificate VARCHAR(128) NOT NULL DEFAULT '';
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
