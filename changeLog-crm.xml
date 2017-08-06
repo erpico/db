@@ -1976,4 +1976,14 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 					        ADD COLUMN medical_certificate VARCHAR(128) NOT NULL DEFAULT '';
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-08-04-01" author="dev1">
+    <sql><![CDATA[
+	  CREATE TABLE IF NOT EXISTS `vehicle_options`
+	  (
+	    `vehicle_id` INT UNSIGNED NOT NULL DEFAULT 0,
+		`option_id`  INT UNSIGNED NOT NULL DEFAULT 0,
+	    INDEX `vehicle_id_idx` (`vehicle_id` ASC)		
+	  ) ENGINE=MyISAM DEFAULT CHARSET=utf8; 
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
