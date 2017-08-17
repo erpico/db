@@ -1993,7 +1993,7 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
   </changeSet>
   <changeSet id="2017-08-17-01" author="dev1">
     <sql><![CDATA[
-      ALTER TABLE `service_citys` ADD COLUMN service_id VARCHAR(128) NOT NULL DEFAULT '';
+      ALTER TABLE `services_citys` ADD COLUMN service_id VARCHAR(128) NOT NULL DEFAULT '';
     ]]></sql>
   </changeSet>
 </databaseChangeLog>
