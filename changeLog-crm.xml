@@ -2001,4 +2001,9 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       INSERT INTO `params` (id, value, name) values ('134', '1', 'EXECUTOR_BIRTHDATE_SMS_SEND');
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-08-22-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `services_addresses` ADD COLUMN address_type INT UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
