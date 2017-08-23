@@ -234,4 +234,16 @@
       ALTER TABLE `queue_cdr` ADD COLUMN `ringtime` INT UNSIGNED NOT NULL DEFAULT 0 AFTER `talktime`;
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-08-21-01" author="rp">
+    <sql><![CDATA[
+      CREATE TABLE `checklist_questions` (  `id` int(11) NOT NULL AUTO_INCREMENT,  `checklist_id` int(11) DEFAULT NULL,  `question` text,  PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+      CREATE TABLE `checklist_answers` (  `id` int(11) NOT NULL AUTO_INCREMENT,  `user_id` int(11) NOT NULL,  `question_id` int(11) NOT NULL,  `date` date NOT NULL,  `answered` datetime NOT NULL,  `answer` int(11) NOT NULL,  PRIMARY KEY (`id`),  UNIQUE KEY `user_question_date` (`user_id`,`question_id`,`date`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-08-23-01" author="rp">
+    <sql><![CDATA[
+      CREATE TABLE `checklists` (  `id` INT NOT NULL AUTO_INCREMENT,  `name` VARCHAR(255) NULL,  PRIMARY KEY (`id`)) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
+
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
