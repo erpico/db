@@ -243,7 +243,11 @@
   <changeSet id="2017-08-23-01" author="rp">
     <sql><![CDATA[
       CREATE TABLE `checklists` (  `id` INT NOT NULL AUTO_INCREMENT,  `name` VARCHAR(255) NULL,  PRIMARY KEY (`id`)) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
-
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-08-28-01" author="rp">
+    <sql><![CDATA[
+      ALTER TABLE `checklist_questions` ADD COLUMN `block` TINYINT(4) NOT NULL DEFAULT '0' AFTER `question`,ADD COLUMN `weight` TINYINT(4) NOT NULL DEFAULT '5' AFTER `block`;
     ]]></sql>
   </changeSet>
 </databaseChangeLog>
