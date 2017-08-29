@@ -2006,4 +2006,30 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `services_addresses` ADD COLUMN address_type INT UNSIGNED NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-08-29-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `vehicle_type` ADD COLUMN `delivering_time` INT UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-08-29-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `vehicle_type` MODIFY COLUMN `id` INT UNSIGNED NOT NULL AUTO_INCREMENT;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-08-29-03" author="dev1">
+    <sql><![CDATA[
+	  CREATE TABLE IF NOT EXISTS `bus4us_tariffs`
+	  (
+	    `id`         INT UNSIGNED NOT NULL AUTO_INCREMENT,
+		`name`       VARCHAR(256) NOT NULL DEFAULT '',
+		`car_type`   INT UNSIGNED NOT NULL DEFAULT 0,
+		`car_class`  INT UNSIGNED NOT NULL DEFAULT 0,
+	    `rent_price` DECIMAL      NOT NULL DEFAULT 0.0,
+		`km_price`   DECIMAL      NOT NULL DEFAULT 0.0,
+		`group_id`   INT UNSIGNED NOT NULL DEFAULT 0,
+		PRIMARY KEY (`id`),
+		INDEX `group_id_idx` (`group_id` ASC)		
+	  ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
