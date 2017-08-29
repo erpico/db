@@ -2032,4 +2032,16 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 	  ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-08-29-04" author="dev1">
+    <sql><![CDATA[
+	  CREATE TABLE IF NOT EXISTS `bus4us_tariff_groups`
+	  (
+	    `id`         INT UNSIGNED NOT NULL AUTO_INCREMENT,
+		`name`       VARCHAR(256) NOT NULL DEFAULT '',
+	    `rent_price` DECIMAL      NOT NULL DEFAULT 0.0,
+		`km_price`   DECIMAL      NOT NULL DEFAULT 0.0,
+		PRIMARY KEY (`id`),		
+	  ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
