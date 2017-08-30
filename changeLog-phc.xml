@@ -250,4 +250,10 @@
       ALTER TABLE `checklist_questions` ADD COLUMN `block` TINYINT(4) NOT NULL DEFAULT '0' AFTER `question`,ADD COLUMN `weight` TINYINT(4) NOT NULL DEFAULT '5' AFTER `block`;
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-08-30-01" author="rp">
+    <sql><![CDATA[
+      ALTER TABLE `checklists` ADD COLUMN `parent_id` INT NULL AFTER `name`;
+      ALTER TABLE `checklists` ADD COLUMN `deleted` TINYINT NULL AFTER `parent_id`;
+    ]]></sql>
+  </changeSet>  
 </databaseChangeLog>
