@@ -2040,7 +2040,9 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 		`name`       VARCHAR(256) NOT NULL DEFAULT '',
 	    `rent_price` DECIMAL      NOT NULL DEFAULT 0.0,
 		`km_price`   DECIMAL      NOT NULL DEFAULT 0.0,
-		PRIMARY KEY (`id`),		
+		`region`     VARCHAR(32)  NOT NULL DEFAULT '',
+		`min_time`   INT UNSIGNED NOT NULL DEFAULT 0,
+		PRIMARY KEY (`id`)		
 	  ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
     ]]></sql>
   </changeSet>
