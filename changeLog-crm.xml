@@ -2051,4 +2051,21 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `zakazi_online` ADD COLUMN `pay_status` INT UNSIGNED NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-09-08-01" author="dev1">
+    <sql><![CDATA[
+	  CREATE TABLE IF NOT EXISTS `notifications`
+	  (
+	    `id`         INT        UNSIGNED NOT NULL AUTO_INCREMENT,
+		`history_id` INT        UNSIGNED NOT NULL DEFAULT 0,
+		`order_id`   INT        UNSIGNED NOT NULL DEFAULT 0,
+	    `sent`       TINYINT(1) UNSIGNED NOT NULL DEFAULT 0,
+		`confirmed`  TINYINT(1) UNSIGNED NOT NULL DEFAULT 0,
+		`driver_id`  INT        UNSIGNED NOT NULL DEFAULT 0,
+		`client_id`  INT        UNSIGNED NOT NULL DEFAULT 0,
+		PRIMARY KEY (`id`),
+		INDEX `order_id_idx`  (`order_id` ASC),
+		INDEX `driver_id_idx` (`driver_id`)
+	  ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
