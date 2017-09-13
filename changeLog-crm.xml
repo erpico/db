@@ -2068,4 +2068,14 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 	  ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-09-13-01" author="dev1">
+    <sql><![CDATA[
+      INSERT IGNORE INTO `params` (id, value, name) values ('135', '', 'SMS_RU_API_ID');
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-09-13-02" author="dev1">
+    <sql><![CDATA[
+      INSERT IGNORE INTO `params` (id, value, name) values ('136', 'https://sms.ru/sms/send', 'SMS_RU_URL');
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
