@@ -2098,4 +2098,14 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       INSERT INTO `params` (id, value, name) values ('137', 'http://bt-1.ru/mail', 'WEB_MAIL_SEND');
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-09-22-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `vehicle_type` ADD COLUMN `passengers_count` INT UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-09-22-03" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `vehicle_type` ADD COLUMN `image_name` VARCHAR(64) NOT NULL DEFAULT '';
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
