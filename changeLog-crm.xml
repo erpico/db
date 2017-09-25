@@ -2108,4 +2108,9 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `vehicle_type` ADD COLUMN `image_name` VARCHAR(64) NOT NULL DEFAULT '';
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-09-25-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `services_citys` ADD COLUMN `active` TINYINT(1) UNSIGNED NOT NULL DEFAULT 1;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
