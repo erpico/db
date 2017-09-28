@@ -58,7 +58,7 @@
         username="${erpico.db_user}"
         password="${erpico.db_password}"
         classpathref="tool.classpath"
-        delimiter="//"/>
+        endDelimiter="//"/>
   </target>
 
   <target name="migrate.phc">
