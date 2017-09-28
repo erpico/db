@@ -2113,4 +2113,19 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `services_citys` ADD COLUMN `active` TINYINT(1) UNSIGNED NOT NULL DEFAULT 1;
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-09-28-01" author="dev1">
+    <sql><![CDATA[
+      delimiter //
+      
+      CREATE TRIGGER set_changing_state_time BEFORE UPDATE ON zakazi
+        FOR EACH ROW
+          BEGIN
+            IF (((NEW.state <> OLD.state) AND (OLD.state <> 0) AND (OLD.state_ex = 1 OR OLD.state_ex = 5)) OR (NEW.state_ex <> OLD.state_ex)) AND (OLD.carid <> 0 AND NEW.carid <> 0)
+            THEN SET NEW.changing_state_time = NOW();
+      	END IF;
+        END; //
+        
+      delimiter ;
+  ]]></sql>
+  </changeSet>  
 </databaseChangeLog>
