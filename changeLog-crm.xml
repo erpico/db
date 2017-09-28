@@ -2114,7 +2114,7 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
     ]]></sql>
   </changeSet>
   <changeSet id="2017-09-28-01" author="dev1">
-    <sql><![CDATA[      
+    <sql endDelimiter="//"><![CDATA[      
       CREATE TRIGGER set_changing_state_time BEFORE UPDATE ON zakazi
         FOR EACH ROW
           BEGIN

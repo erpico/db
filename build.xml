@@ -57,8 +57,7 @@
         url="jdbc:mysql://${erpico.db_host}:${erpico.db_port}/${erpico.db_schema}?encoding=UTF-8&amp;useUnicode=true&amp;characterEncoding=UTF-8"
         username="${erpico.db_user}"
         password="${erpico.db_password}"
-        classpathref="tool.classpath"
-        endDelimiter="//"/>
+        classpathref="tool.classpath"/>
   </target>
 
   <target name="migrate.phc">
