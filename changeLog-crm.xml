@@ -2124,5 +2124,29 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
         END;
         //
   ]]></sql>
+  </changeSet>
+  <changeSet id="2017-10-01-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi` ADD COLUMN `summ_for_driver`  DECIMAL(10,2) NOT NULL DEFAULT 0.0,
+	                       ADD COLUMN `summ_for_service` DECIMAL(10,2) NOT NULL DEFAULT 0.0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-10-01-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_archive` ADD COLUMN `summ_for_driver`  DECIMAL(10,2) NOT NULL DEFAULT 0.0,
+	                               ADD COLUMN `summ_for_service` DECIMAL(10,2) NOT NULL DEFAULT 0.0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-10-01-03" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE bus4us_tariffs MODIFY rent_price DECIMAL(10,2),
+	                             MODIFY km_price   DECIMAL(10,2);
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-10-01-04" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE bus4us_tariff_groups MODIFY rent_price DECIMAL(10,2),
+	                                   MODIFY km_price   DECIMAL(10,2);
+    ]]></sql>
   </changeSet>  
 </databaseChangeLog>
