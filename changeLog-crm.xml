@@ -2148,5 +2148,10 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE bus4us_tariff_groups MODIFY rent_price DECIMAL(10,2),
 	                                   MODIFY km_price   DECIMAL(10,2);
     ]]></sql>
-  </changeSet>  
+  </changeSet>
+  <changeSet id="2017-10-09-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE organizations ADD COLUMN `agregator` TINYINT(1) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet> 
 </databaseChangeLog>
