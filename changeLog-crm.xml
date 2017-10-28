@@ -2167,4 +2167,16 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 		) ENGINE=MyISAM DEFAULT CHARSET=utf8;
     ]]></sql>
   </changeSet> 
+  <changeSet id="2017-10-28-01" author="rp">
+    <sql><![CDATA[
+		ALTER TABLE `vehicle` 
+			ADD COLUMN `year` VARCHAR(16) NOT NULL AFTER `vehicle_certificate`,
+			ADD COLUMN `euro_level` VARCHAR(16) NOT NULL AFTER `year`,
+			ADD COLUMN `insurance_number` VARCHAR(45) NOT NULL AFTER `euro_level`,
+			ADD COLUMN `insurance_expire` DATETIME NOT NULL AFTER `insurance_number`,
+			ADD COLUMN `osago_number` VARCHAR(45) NOT NULL AFTER `insurance_expire`,
+			ADD COLUMN `osago_expire` DATETIME NOT NULL AFTER `osago_number`,
+			ADD COLUMN `diagcard` VARCHAR(45) NOT NULL AFTER `osago_expire`;
+    ]]></sql>
+  </changeSet> 
 </databaseChangeLog>
