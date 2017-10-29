@@ -2179,4 +2179,19 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 			ADD COLUMN `diagcard` VARCHAR(45) NOT NULL AFTER `osago_expire`;
     ]]></sql>
   </changeSet> 
+  <changeSet id="2017-10-30-01" author="rp">
+    <sql><![CDATA[
+	  ALTER TABLE `vehicle` 
+    	CHANGE COLUMN `insurance_expire` `insurance_expire` DATE NOT NULL  DEFAULT '0000-00-00',
+	    CHANGE COLUMN `osago_expire` `osago_expire` DATE NOT NULL  DEFAULT '0000-00-00';
+    ALTER TABLE `vehicle` 
+		CHANGE COLUMN `next_car_service` `next_car_service` DATE NOT NULL DEFAULT '0000-00-00' ;
+	ALTER TABLE `bus4us_drivers` 
+		ADD COLUMN `passport_serie` VARCHAR(10) NOT NULL AFTER `document_photo`,
+		ADD COLUMN `passport_number` VARCHAR(10) NOT NULL AFTER `passport_serie`,
+		ADD COLUMN `passport_issuer` VARCHAR(255) NOT NULL AFTER `passport_number`,
+		ADD COLUMN `passport_issued` DATE NOT NULL AFTER `passport_issuer`,
+		ADD COLUMN `passport_code` VARCHAR(10) NOT NULL AFTER `passport_issued`;
+    ]]></sql>
+  </changeSet> 
 </databaseChangeLog>
