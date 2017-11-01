@@ -2193,5 +2193,12 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 		ADD COLUMN `passport_issued` DATE NOT NULL AFTER `passport_issuer`,
 		ADD COLUMN `passport_code` VARCHAR(10) NOT NULL AFTER `passport_issued`;
     ]]></sql>
+  </changeSet>
+  <changeSet id="2017-11-01-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE vodils ADD COLUMN `driver_licence_id`         VARCHAR(64) NOT NULL DEFAULT '',
+	                     ADD COLUMN `driver_licence_categories` VARCHAR(16) NOT NULL DEFAULT '',
+						 ADD COLUMN `driver_licence_expired`    DATETIME    NOT NULL  DEFAULT '0000-00-00 00:00:00';
+    ]]></sql>
   </changeSet> 
 </databaseChangeLog>
