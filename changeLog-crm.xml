@@ -2200,5 +2200,18 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 	                     ADD COLUMN `driver_licence_categories` VARCHAR(16) NOT NULL DEFAULT '',
 						 ADD COLUMN `driver_licence_expired`    DATETIME    NOT NULL  DEFAULT '0000-00-00 00:00:00';
     ]]></sql>
+  </changeSet>
+  <changeSet id="2017-11-01-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE vodils CHANGE COLUMN `driver_licence_id` `driver_license_id` VARCHAR(64) NOT NULL DEFAULT '',
+	                     CHANGE COLUMN `driver_licence_categories` `driver_license_categories` VARCHAR(16) NOT NULL DEFAULT '',
+						 CHANGE COLUMN `driver_licence_expired` `driver_license_expired` DATETIME NOT NULL  DEFAULT '0000-00-00 00:00:00',
+						 CHANGE COLUMN `driver_licence` `driver_license` VARCHAR(128) NOT NULL DEFAULT '';
+    ]]></sql>
+  </changeSet> 
+  <changeSet id="2017-11-01-03" author="dev1">
+    <sql><![CDATA[
+        ALTER TABLE `services_citys` CHANGE COLUMN `licence` `license` VARCHAR(512) NOT NULL DEFAULT '';
+    ]]></sql>
   </changeSet> 
 </databaseChangeLog>
