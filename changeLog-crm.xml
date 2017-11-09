@@ -2223,5 +2223,15 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 		PRIMARY KEY (`id`)
 	  ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
     ]]></sql>
-  </changeSet> 
+  </changeSet>
+  <changeSet id="2017-11-09-01" author="dev1">
+    <sql><![CDATA[
+        ALTER TABLE `bus4us_tariffs` ADD COLUMN `min_time` INT UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-11-09-02" author="dev1">
+    <sql><![CDATA[
+        ALTER TABLE `bus4us_tariff_groups` DROP COLUMN `min_time`;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
