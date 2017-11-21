@@ -2234,4 +2234,9 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
         ALTER TABLE `bus4us_tariff_groups` DROP COLUMN `min_time`;
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-11-21-01" author="dev1">
+    <sql><![CDATA[
+        ALTER TABLE `vehicle` ADD COLUMN `vin` VARCHAR(20) NOT NULL DEFAULT '';
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
