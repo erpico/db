@@ -2244,4 +2244,10 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
         ALTER TABLE `services_citys` ADD COLUMN `geoaddr` VARCHAR(256) NOT NULL DEFAULT '';
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-11-27-01" author="dev1">
+    <sql><![CDATA[
+        ALTER TABLE `vodils_params` ADD COLUMN `url`     VARCHAR(256) NOT NULL DEFAULT '',
+                                    ADD COLUMN `deleted` TINYINT(1)   NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
