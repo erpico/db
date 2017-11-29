@@ -2270,7 +2270,7 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
   </changeSet>
   <changeSet id="2017-11-29-03" author="dev1">
     <sql><![CDATA[
-        ALTER TABLE `zakazi_online` ENGINE = InnoDB CHARACTER SET = utf8;
+        ALTER TABLE `zakazi_online` ROW_FORMAT=COMPACT ENGINE = InnoDB CHARACTER SET = utf8;
     ]]></sql>
   </changeSet>
 </databaseChangeLog>
