@@ -2268,4 +2268,9 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
                                     ADD COLUMN manager_id INT NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-11-29-03" author="dev1">
+    <sql><![CDATA[
+        ALTER TABLE `zakazi_online` ENGINE = InnoDB CHARACTER SET = utf8;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
