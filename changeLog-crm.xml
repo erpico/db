@@ -2273,4 +2273,10 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
         ALTER TABLE `zakazi_online` ROW_FORMAT=COMPACT ENGINE = InnoDB CHARACTER SET = utf8;
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-11-30-01" author="dev1">
+    <sql><![CDATA[
+        ALTER TABLE `vehicle_class` ADD COLUMN `country` VARCHAR(200) NOT NULL DEFAULT '',
+                                    ADD COLUMN `comfort` VARCHAR(20) NOT NULL DEFAULT '';
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
