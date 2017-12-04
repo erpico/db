@@ -2299,4 +2299,9 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
         ALTER TABLE `services_citys` ADD COLUMN `org_form` INT UNSIGNED NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-12-04-01" author="dev1">
+    <sql><![CDATA[
+        ALTER TABLE `vehicle_class` MODIFY COLUMN `year` VARCHAR(50) DEFAULT '';
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
