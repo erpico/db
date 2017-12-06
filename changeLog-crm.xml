@@ -2319,4 +2319,11 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
         ALTER TABLE `bus4us_tariffs` ADD COLUMN `deleted` TINYINT(1) DEFAULT 0;
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-12-06-01" author="dev1">
+    <sql><![CDATA[
+        ALTER TABLE `services_addresses` ADD COLUMN `name`      VARCHAR(50) DEFAULT '',
+                                         ADD COLUMN `longitude` DECIMAL(5,2) NOT NULL DEFAULT 0.00,
+                                         ADD COLUMN `latitude`  DECIMAL(5,2) NOT NULL DEFAULT 0.00;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
