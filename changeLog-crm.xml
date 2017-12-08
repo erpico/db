@@ -2252,7 +2252,7 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
   </changeSet>
   <changeSet id="2017-11-28-01" author="dev1">
     <sql><![CDATA[
-        ALTER TABLE `gps_location` ENGINE = InnoDB CHARACTER SET = utf8;
+        ALTER TABLE `gps_location` ENGINE = InnoDB ROW_FORMAT=COMPACT CHARACTER SET = utf8;
     ]]></sql>
   </changeSet>
   <changeSet id="2017-11-29-01" author="dev1">
@@ -2324,6 +2324,27 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
         ALTER TABLE `services_addresses` ADD COLUMN `name`      VARCHAR(50) DEFAULT '',
                                          ADD COLUMN `longitude` DECIMAL(5,2) NOT NULL DEFAULT 0.00,
                                          ADD COLUMN `latitude`  DECIMAL(5,2) NOT NULL DEFAULT 0.00;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-12-07-01" author="dev1">
+    <sql><![CDATA[
+        CREATE TABLE IF NOT EXISTS `client_info`
+		(
+		  `id`          INT UNSIGNED NOT NULL AUTO_INCREMENT,
+		  `type`        TINYINT(1)   NOT NULL DEFAULT 0,								  
+          `order_id`    INT UNSIGNED NOT NULL DEFAULT 0,
+          `client_id`   INT UNSIGNED NOT NULL DEFAULT 0,
+          `city`        VARCHAR(200) NOT NULL DEFAULT '',
+          `org`         VARCHAR(100) NOT NULL DEFAULT '',
+          `passport`    VARCHAR(200) NOT NULL DEFAULT '',
+          `fio`         VARCHAR(62)  NOT NULL DEFAULT '',
+          `contact_fio` VARCHAR(62)  NOT NULL DEFAULT '',
+          `inn`         VARCHAR(20)  NOT NULL DEFAULT '',
+          `comment`     VARCHAR(200) NOT NULL DEFAULT '',
+		  PRIMARY KEY(id),
+		  INDEX `client_id_idx`  (`order_id` ASC)
+          INDEX `order_id_idx`   (`order_id` ASC)
+	  )   ENGINE = InnoDB ROW_FORMAT = COMPACT CHARACTER SET = utf8
     ]]></sql>
   </changeSet>
 </databaseChangeLog>
