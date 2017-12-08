@@ -2252,7 +2252,7 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
   </changeSet>
   <changeSet id="2017-11-28-01" author="dev1">
     <sql><![CDATA[
-        ALTER TABLE `gps_location` ENGINE = InnoDB ROW_FORMAT=COMPACT CHARACTER SET = utf8;
+        ALTER TABLE `gps_location` ENGINE = InnoDB CHARACTER SET = utf8;
     ]]></sql>
   </changeSet>
   <changeSet id="2017-11-29-01" author="dev1">
