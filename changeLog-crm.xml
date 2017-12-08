@@ -2347,4 +2347,28 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 	  )   ENGINE = InnoDB ROW_FORMAT = COMPACT CHARACTER SET = utf8
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-12-08-01" author="dev1">
+    <sql><![CDATA[
+        ALTER TABLE `zakazi`             ADD COLUMN `driver_push_45min_before` TINYINT(1) NOT NULL DEFAULT 0,
+                                         ADD COLUMN `driver_push_5min_before`  TINYINT(1) NOT NULL DEFAULT 0,
+                                         ADD COLUMN `driver_push_20min_after`  TINYINT(1) NOT NULL DEFAULT 0,
+										 ADD COLUMN `driver_push_40min_after`  TINYINT(1) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-12-08-02" author="dev1">
+    <sql><![CDATA[
+        ALTER TABLE `zakazi_online`      ADD COLUMN `driver_push_45min_before` TINYINT(1) NOT NULL DEFAULT 0,
+                                         ADD COLUMN `driver_push_5min_before`  TINYINT(1) NOT NULL DEFAULT 0,
+                                         ADD COLUMN `driver_push_20min_after`  TINYINT(1) NOT NULL DEFAULT 0,
+										 ADD COLUMN `driver_push_40min_after`  TINYINT(1) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-12-08-03" author="dev1">
+    <sql><![CDATA[
+        ALTER TABLE `zakazi_archive`     ADD COLUMN `driver_push_45min_before` TINYINT(1) NOT NULL DEFAULT 0,
+                                         ADD COLUMN `driver_push_5min_before`  TINYINT(1) NOT NULL DEFAULT 0,
+                                         ADD COLUMN `driver_push_20min_after`  TINYINT(1) NOT NULL DEFAULT 0,
+										 ADD COLUMN `driver_push_40min_after`  TINYINT(1) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
