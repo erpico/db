@@ -2371,4 +2371,23 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 										 ADD COLUMN `driver_push_40min_after`  TINYINT(1) NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-12-15-01" author="dev1">
+    <sql><![CDATA[
+        ALTER TABLE `zakazi`             ADD COLUMN `pay_system_type` TINYINT(1)  NOT NULL DEFAULT 0,
+                                         ADD COLUMN `payment_id`      VARCHAR(50) NOT NULL DEFAULT '',
+                                         ADD COLUMN `payment_status`  TINYINT(1)  NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-12-15-02" author="dev1">
+    <sql><![CDATA[
+        ALTER TABLE `zakazi_archive`     ADD COLUMN `pay_system_type` TINYINT(1)  NOT NULL DEFAULT 0,
+                                         ADD COLUMN `payment_id`      VARCHAR(50) NOT NULL DEFAULT '',
+                                         ADD COLUMN `payment_status`  TINYINT(1)  NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-12-15-03" author="dev1">
+    <sql><![CDATA[
+      INSERT INTO `params` (id, value, name) values ('138', 'http://bus4us.ru/pay/confirm/', 'PAYMENT_CONFIRM');
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
