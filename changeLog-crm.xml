@@ -2390,4 +2390,9 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       INSERT INTO `params` (id, value, name) values ('138', 'http://bus4us.ru/pay/confirm/', 'PAYMENT_CONFIRM');
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-12-16-01" author="dev1">
+    <sql><![CDATA[
+      INSERT INTO `params` (id, value, name) values ('139', 'http://bus4us.ru/pay/cancel/', 'PAYMENT_CANCEL');
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
