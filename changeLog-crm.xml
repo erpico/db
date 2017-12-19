@@ -2399,5 +2399,18 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
     <sql><![CDATA[
       ALTER TABLE `client_info` ADD UNIQUE INDEX `client_order_idx` (`client_id` ASC, `order_id` ASC);
     ]]></sql>
-  </changeSet>  
+  </changeSet> 
+  <changeSet id="2017-12-19-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `client_info` DROP COLUMN `passport`;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-12-19-03" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `client_info` ADD COLUMN `passport_series` VARCHAR(16)  NOT NULL DEFAULT '',
+	                            ADD COLUMN `passport_number` VARCHAR(16)  NOT NULL DEFAULT '',
+								ADD COLUMN `passport_who`    VARCHAR(256) NOT NULL DEFAULT '',
+								ADD COLUMN `passport_when`   VARCHAR(64)  NOT NULL DEFAULT '';
+    ]]></sql>
+  </changeSet>    
 </databaseChangeLog>
