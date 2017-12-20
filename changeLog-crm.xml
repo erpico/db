@@ -2412,5 +2412,19 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 								ADD COLUMN `passport_who`    VARCHAR(256) NOT NULL DEFAULT '',
 								ADD COLUMN `passport_when`   VARCHAR(64)  NOT NULL DEFAULT '';
     ]]></sql>
-  </changeSet>    
+  </changeSet>
+  <changeSet id="2017-12-20-01" author="dev1">
+    <sql><![CDATA[
+      CREATE TABLE IF NOT EXISTS `services_cities_id_number`
+	  (
+	    `id` INT UNSIGNED NOT NULL DEFAULT 0,
+		PRIMARY KEY (`id`)
+	  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-12-20-02" author="dev1">
+    <sql><![CDATA[
+      INSERT INTO `services_cities_id_number` (id) values (1);
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
