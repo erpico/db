@@ -2459,5 +2459,15 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 											  ('17', 'Представительство коммерческой компании', 'ПКК'),
 											  ('18', 'Федеральное государственное бюджетное учреждение науки', 'ФГБУН') ON DUPLICATE KEY UPDATE value=value, abbr=abbr;
     ]]></sql>
-  </changeSet>  
+  </changeSet>
+  <changeSet id="2017-01-12-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `clients_billing` ADD COLUMN `payment_id` VARCHAR(50) NOT NULL DEFAULT '';
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-01-12-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `exucators_billing` ADD COLUMN `payment_id` VARCHAR(50) NOT NULL DEFAULT '';
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
