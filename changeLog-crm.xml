@@ -2470,4 +2470,23 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `exucators_billing` ADD COLUMN `payment_id` VARCHAR(50) NOT NULL DEFAULT '';
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-01-12-03" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `client_info` ADD COLUMN `passport_code`      VARCHAR(64)  NOT NULL DEFAULT '',
+	                            ADD COLUMN `birthdate`          DATETIME     NOT NULL DEFAULT '0000-00-00 00:00:00',
+                                ADD COLUMN `opf`                VARCHAR(64)  NOT NULL DEFAULT '',
+                                ADD COLUMN `ogrn`               VARCHAR(64)  NOT NULL DEFAULT '',
+                                ADD COLUMN `kpp`                VARCHAR(64)  NOT NULL DEFAULT '',
+                                ADD COLUMN `address`            VARCHAR(512) NOT NULL DEFAULT '',
+                                ADD COLUMN `bik`                VARCHAR(64)  NOT NULL DEFAULT '',
+                                ADD COLUMN `account`            VARCHAR(64)  NOT NULL DEFAULT '',
+                                ADD COLUMN `corr_account`       VARCHAR(64)  NOT NULL DEFAULT '',
+                                ADD COLUMN `corr_bank`          VARCHAR(128) NOT NULL DEFAULT '';
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-01-12-04" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `adreses` MODIFY COLUMN `street` VARCHAR(512) NOT NULL DEFAULT '';
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
