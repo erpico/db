@@ -2494,4 +2494,52 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `client_info` CHANGE COLUMN `address` `legal_address` VARCHAR(512) NOT NULL DEFAULT '';
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-01-17-01" author="dev1">
+    <sql><![CDATA[
+        ALTER TABLE `zakazi`             DROP COLUMN `driver_push_45min_before`,
+                                         DROP COLUMN `driver_push_5min_before`,
+                                         DROP COLUMN `driver_push_20min_after`,
+										 DROP COLUMN `driver_push_40min_after`;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-01-17-02" author="dev1">
+    <sql><![CDATA[
+        ALTER TABLE `zakazi_online`      DROP COLUMN `driver_push_45min_before`,
+                                         DROP COLUMN `driver_push_5min_before`,
+                                         DROP COLUMN `driver_push_20min_after`,
+										 DROP COLUMN `driver_push_40min_after`;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-01-17-03" author="dev1">
+    <sql><![CDATA[
+        ALTER TABLE `zakazi_archive`     DROP COLUMN `driver_push_45min_before`,
+                                         DROP COLUMN `driver_push_5min_before`,
+                                         DROP COLUMN `driver_push_20min_after`,
+										 DROP COLUMN `driver_push_40min_after`;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-01-17-04" author="dev1">
+    <sql><![CDATA[
+        ALTER TABLE `zakazi`             ADD COLUMN `driver_push_45min_before` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+                                         ADD COLUMN `driver_push_5min_before`  DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+                                         ADD COLUMN `driver_push_20min_after`  DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+										 ADD COLUMN `driver_push_40min_after`  DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-01-17-05" author="dev1">
+    <sql><![CDATA[
+        ALTER TABLE `zakazi_online`      ADD COLUMN `driver_push_45min_before` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+                                         ADD COLUMN `driver_push_5min_before`  DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+                                         ADD COLUMN `driver_push_20min_after`  DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+										 ADD COLUMN `driver_push_40min_after`  DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-01-17-06" author="dev1">
+    <sql><![CDATA[
+        ALTER TABLE `zakazi_archive`     ADD COLUMN `driver_push_45min_before` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+                                         ADD COLUMN `driver_push_5min_before`  DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+                                         ADD COLUMN `driver_push_20min_after`  DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+										 ADD COLUMN `driver_push_40min_after`  DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
+    ]]></sql>
+  </changeSet>  
 </databaseChangeLog>
