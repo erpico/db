@@ -2541,5 +2541,20 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
                                          ADD COLUMN `driver_push_20min_after`  DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
 										 ADD COLUMN `driver_push_40min_after`  DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
     ]]></sql>
-  </changeSet>  
+  </changeSet>
+  <changeSet id="2017-01-19-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi` ADD COLUMN `driverTrouble` INT UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-01-19-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_archive` ADD COLUMN `driverTrouble` INT UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-01-19-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_online` ADD COLUMN `driverTrouble` INT UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
