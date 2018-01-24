@@ -256,4 +256,9 @@
       ALTER TABLE `checklists` ADD COLUMN `deleted` TINYINT NULL AFTER `parent_id`;
     ]]></sql>
   </changeSet>  
+  <changeSet id="2018-01-25-01" author="rp">
+    <sql><![CDATA[
+	 ALTER TABLE `checklist_answers` ADD COLUMN `comment` TEXT NULL DEFAULT NULL AFTER `answer`;
+    ]]></sql>
+  </changeSet>  
 </databaseChangeLog>
