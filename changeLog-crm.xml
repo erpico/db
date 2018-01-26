@@ -2587,4 +2587,14 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `zakazi_online` ADD COLUMN `driver_45min_call_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-01-26-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `client_info` DROP COLUMN `passport_when`;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-01-26-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `client_info` ADD COLUMN `passport_when` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
