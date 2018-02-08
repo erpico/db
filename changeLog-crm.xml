@@ -2634,4 +2634,5 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 			MODIFY COLUMN `osago_expire`     DATETIME NOT NULL    DEFAULT '0000-00-00 00:00:00',
 			MODIFY COLUMN `diagcard`         VARCHAR(45) NOT NULL DEFAULT '';
     ]]></sql>
+  </changeSet>
 </databaseChangeLog>
