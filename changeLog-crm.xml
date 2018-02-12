@@ -2635,4 +2635,19 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 			MODIFY COLUMN `diagcard`         VARCHAR(45) NOT NULL DEFAULT '';
     ]]></sql>
   </changeSet>
+  <changeSet id="2017-02-12-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi` ADD COLUMN `rush_order` TINYINT(1) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-02-12-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_online` ADD COLUMN `rush_order` TINYINT(1) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2017-02-12-03" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_archive` ADD COLUMN `rush_order` TINYINT(1) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
