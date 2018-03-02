@@ -2678,4 +2678,9 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 	                               ADD COLUMN `route_paid` INT UNSIGNED NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-03-02-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `services_citys` ADD COLUMN `deleted` TINYINT(1) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
