@@ -2683,4 +2683,30 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `services_citys` ADD COLUMN `deleted` TINYINT(1) NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-03-06-01" author="dev1">
+    <sql><![CDATA[
+      CREATE TABLE IF NOT EXISTS `geozones`
+	  (
+        `id`    INT          NOT NULL AUTO_INCREMENT,
+        `name` VARCHAR(256)  CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL DEFAULT '',
+        PRIMARY KEY (`id`)
+      )
+      ENGINE=InnoDB CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-03-06-02" author="dev1">
+    <sql><![CDATA[
+      CREATE TABLE IF NOT EXISTS `geozones_coordinates`
+	  (
+        `id`           INT NOT NULL AUTO_INCREMENT,
+        `geozones_id`  INT NOT NULL,
+		`latitude`     DECIMAL(8,4) NOT NULL DEFAULT 0.0000,
+		`longitude`    DECIMAL(8,4) NOT NULL DEFAULT 0.0000,
+        PRIMARY KEY (`id`),
+		KEY `fk_geozones_coordinates_1_idx` (`geozones_id`),
+        CONSTRAINT `geozones_id_idx` FOREIGN KEY (`geozones_id`) REFERENCES `geozones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+      )
+      ENGINE=InnoDB CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
