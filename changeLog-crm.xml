@@ -2724,4 +2724,5 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `services_citys` ADD COLUMN `login`    VARCHAR(64) NOT NULL DEFAULT '',
 	                               ADD COLUMN `password` VARCHAR(64) NOT NULL DEFAULT '';
     ]]></sql>
+  </changeSet>
 </databaseChangeLog>
