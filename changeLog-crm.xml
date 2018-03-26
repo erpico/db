@@ -2725,4 +2725,9 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 	                               ADD COLUMN `password` VARCHAR(64) NOT NULL DEFAULT '';
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-03-23-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `services_citys` DROP COLUMN `password`;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
