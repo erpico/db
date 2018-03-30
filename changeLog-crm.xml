@@ -2730,4 +2730,29 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `services_citys` DROP COLUMN `password`;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-03-30-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `services_citys` ADD COLUMN `sending_letter_time` INT(4) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-03-30-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `services_citys` ADD COLUMN `sending_no_driver_letter_time` INT(4) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-03-30-03" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi` ADD COLUMN `service_state` INT(1) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-03-30-04" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_online` ADD COLUMN `service_state` INT(1) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-03-30-05" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_archive` ADD COLUMN `service_state` INT(1) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
