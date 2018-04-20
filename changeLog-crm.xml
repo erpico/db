@@ -2772,4 +2772,9 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `bus4us_orders` ADD COLUMN `service_comment` TEXT NOT NULL;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-04-20-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `bus4us_orders` ADD COLUMN `service_letter` TEXT NOT NULL;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
