@@ -261,4 +261,16 @@
 	 ALTER TABLE `checklist_answers` ADD COLUMN `comment` TEXT NULL DEFAULT NULL AFTER `answer`;
     ]]></sql>
   </changeSet>  
+  <changeSet id="2018-05-16-01" author="rp">
+    <sql><![CDATA[
+	 CREATE TABLE `cid_info` (
+		  `id` int(11) NOT NULL AUTO_INCREMENT,
+		  `cid` varchar(45) DEFAULT NULL,
+		  `name` varchar(255) DEFAULT NULL,
+		  `org` varchar(255) DEFAULT NULL,
+		  `city` varchar(255) DEFAULT NULL,
+		  PRIMARY KEY (`id`)
+		) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    ]]></sql>
+  </changeSet>  
 </databaseChangeLog>
