@@ -273,4 +273,9 @@
 		) ENGINE=InnoDB DEFAULT CHARSET=utf8;
     ]]></sql>
   </changeSet>  
+  <changeSet id="2018-05-17-01" author="rap">
+    <sql><![CDATA[
+      REPLACE `cfg_setting` (`handle`, `val`) VALUES ('cti.show_welcome.timeout', '15');
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
