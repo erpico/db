@@ -278,4 +278,11 @@
       REPLACE `cfg_setting` (`handle`, `val`) VALUES ('cti.show_welcome.timeout', '15');
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-06-07-01" author="rap">
+    <sql><![CDATA[
+      REPLACE `cfg_setting` (`handle`, `val`) VALUES ('cti.autoready.afterwork.timeout', '0');
+      REPLACE `cfg_setting` (`handle`, `val`) VALUES ('cti.autoready.additional.timeout', '0');
+      ALTER TABLE `scripts_stages` ADD COLUMN `autobuttons` INT NULL AFTER `show_prevnext`;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
