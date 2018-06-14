@@ -278,6 +278,47 @@
       REPLACE `cfg_setting` (`handle`, `val`) VALUES ('cti.show_welcome.timeout', '15');
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-06-06-01" author="rap">
+    <sql><![CDATA[
+      CREATE TABLE IF NOT EXISTS `scripts` (
+		  `id` int(11) NOT NULL AUTO_INCREMENT,
+		  `name` varchar(255) NOT NULL,
+		  `deleted` int(11) DEFAULT NULL,
+		  PRIMARY KEY (`id`)
+	   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+	  CREATE TABLE IF NOT EXISTS `scripts_stages` (
+		  `id` int(11) NOT NULL AUTO_INCREMENT,
+		  `script_id` int(11) NOT NULL,
+		  `parent_id` int(11) NOT NULL,
+		  `name` varchar(255) DEFAULT NULL,
+		  `show_name` int(11) NOT NULL DEFAULT '0',
+		  `show_prevnext` int(11) NOT NULL DEFAULT '0',
+		  `deleted` int(11) DEFAULT NULL,
+		  PRIMARY KEY (`id`),
+		  KEY `sid_idx` (`script_id`),
+		  CONSTRAINT `sid` FOREIGN KEY (`script_id`) REFERENCES `scripts` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+		) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+		CREATE TABLE IF NOT EXISTS `scripts_stages_elements` (
+		  `id` int(11) NOT NULL AUTO_INCREMENT,
+		  `script_stage_id` int(11) NOT NULL,
+		  `type` varchar(45) DEFAULT NULL,
+		  `label` varchar(255) DEFAULT NULL,
+		  `text` text,
+		  `url` varchar(255) DEFAULT NULL,
+		  `form` text,
+		  `form_to` varchar(255) DEFAULT NULL,
+		  `action` varchar(45) DEFAULT NULL,
+		  `action_script` int(11) DEFAULT NULL,
+		  `action_block` int(11) DEFAULT NULL,
+		  `action_text` text,
+		  `action_transfer` varchar(45) DEFAULT NULL,
+		  `deleted` int(11) DEFAULT NULL,
+		  PRIMARY KEY (`id`),
+		  KEY `sid_idx` (`script_stage_id`),
+		  CONSTRAINT `sid2` FOREIGN KEY (`script_stage_id`) REFERENCES `scripts_stages` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+		) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    ]]></sql>
+  </changeSet>
   <changeSet id="2018-06-07-01" author="rap">
     <sql><![CDATA[
       REPLACE `cfg_setting` (`handle`, `val`) VALUES ('cti.autoready.afterwork.timeout', '0');
