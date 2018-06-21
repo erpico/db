@@ -2822,4 +2822,19 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `notifications` ADD COLUMN `time_sent` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-06-21-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `acl_user` DROP COLUMN `service_id`;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-06-21-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi` ADD COLUMN `operator_comment` VARCHAR(512) NOT NULL DEFAULT '';
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-06-21-03" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_archive` ADD COLUMN `operator_comment` VARCHAR(512) NOT NULL DEFAULT '';
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
