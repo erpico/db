@@ -2847,4 +2847,29 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `zakazi_archive` ADD COLUMN `order_changed_for_service` TINYINT(1) NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-07-10-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi` ADD COLUMN `final_service_price` DECIMAL(10,2) NOT NULL DEFAULT 0.00;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-07-10-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_archive` ADD COLUMN `final_service_price` DECIMAL(10,2) NOT NULL DEFAULT 0.00;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-07-10-03" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi` ADD COLUMN `final_client_price` DECIMAL(10,2) NOT NULL DEFAULT 0.00;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-07-10-04" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_archive` ADD COLUMN `final_client_price` DECIMAL(10,2) NOT NULL DEFAULT 0.00;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-07-12-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `geozones` ADD COLUMN `active` TINYINT(1) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
