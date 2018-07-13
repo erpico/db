@@ -2872,4 +2872,34 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `geozones` ADD COLUMN `active` TINYINT(1) NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-07-13-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi` ADD COLUMN `failed` TINYINT(1) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-07-13-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_archive` ADD COLUMN `failed` TINYINT(1) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-07-13-03" author="dev1">
+    <sql><![CDATA[
+      INSERT INTO `acl_rule` (`name`, `handle`) VALUES ('Администратор', 'crm.bus4us.admin');
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-07-13-04" author="dev1">
+    <sql><![CDATA[
+	  INSERT INTO `acl_rule` (`name`, `handle`) VALUES ('Диспетчер Bus4Us', 'crm.bus4us.operator');
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-07-13-05" author="dev1">
+    <sql><![CDATA[
+	  INSERT INTO `acl_rule` (`name`, `handle`) VALUES ('Старший диспетчер перевозчика', 'crm.bus4us.service.main.operator');
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-07-13-06" author="dev1">
+    <sql><![CDATA[
+	  INSERT INTO `acl_rule` (`name`, `handle`) VALUES ('Диспетчер перевозчика', 'crm.bus4us.service.operator');
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
