@@ -326,4 +326,9 @@
       ALTER TABLE `scripts_stages` ADD COLUMN `autobuttons` INT NULL AFTER `show_prevnext`;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-06-07-17" author="rap">
+    <sql><![CDATA[
+      ALTER TABLE `queue` ADD COLUMN `sl` INT(11) NOT NULL DEFAULT '20' AFTER `service_id`;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
