@@ -2912,4 +2912,28 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `acl_auth_token` ADD UNIQUE INDEX `acl_auth_token_idx` (`acl_user_id` ASC, `pcode` ASC);
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-07-23-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `clients` ADD COLUMN `login`                   VARCHAR(64) NOT NULL DEFAULT '',
+	                        ADD COLUMN `auth_password`           VARCHAR(64) NOT NULL DEFAULT '',
+							ADD COLUMN `additional_phone_number` VARCHAR(64) NOT NULL DEFAULT '',
+                            ADD COLUMN `photo_proxy`             VARCHAR(256) NOT NULL DEFAULT '',
+							ADD COLUMN `photo_passport`          VARCHAR(256) NOT NULL DEFAULT '',
+							ADD COLUMN `photo_man_with_passport` VARCHAR(256) NOT NULL DEFAULT '';
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-07-23-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `client_info` ADD COLUMN `entity_type` TINYINT(1) NOT NULL DEFAULT 0,
+	                            ADD COLUMN `org_phone`   VARCHAR(64) NOT NULL DEFAULT '';
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-07-24-01" author="dev1">
+    <sql><![CDATA[
+        ALTER TABLE `zakazi_online` ADD COLUMN `pay_system_type` TINYINT(1)    NOT NULL DEFAULT 0,
+                                    ADD COLUMN `payment_id`      VARCHAR(50)   NOT NULL DEFAULT '',
+                                    ADD COLUMN `payment_status`  TINYINT(1)    NOT NULL DEFAULT 0,
+							        ADD COLUMN `amount_paid`     DECIMAL(10,2) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
