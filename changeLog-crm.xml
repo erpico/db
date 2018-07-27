@@ -2936,4 +2936,9 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 							        ADD COLUMN `amount_paid`     DECIMAL(10,2) NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-07-27-01" author="dev1">
+    <sql><![CDATA[
+        ALTER TABLE `adreses` MODIFY COLUMN `name` VARCHAR(256) NOT NULL DEFAULT '';
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
