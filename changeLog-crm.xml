@@ -2941,4 +2941,9 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
         ALTER TABLE `adreses` MODIFY COLUMN `name` VARCHAR(256) NOT NULL DEFAULT '';
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-07-27-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `acl_auth_token` DROP INDEX `acl_auth_token_idx`;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
