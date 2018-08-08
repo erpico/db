@@ -2946,4 +2946,19 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `acl_auth_token` DROP INDEX `acl_auth_token_idx`;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-08-06-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `services_citys` ADD COLUMN `created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-08-06-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `vehicle` ADD COLUMN `created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-08-06-03" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `vodils` ADD COLUMN `created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
