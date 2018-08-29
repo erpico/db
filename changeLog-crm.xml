@@ -2961,4 +2961,99 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `vodils` ADD COLUMN `created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-08-28-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `services_citys` ADD COLUMN `details` TINYINT(1) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-08-28-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `vodils` ADD COLUMN `prevent_new_orders_push` TINYINT(1) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-08-29-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi` ADD COLUMN `bus4us_client_sms_in_4_hours` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-08-29-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_online` ADD COLUMN `bus4us_client_sms_in_4_hours` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-08-29-03" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_archive` ADD COLUMN `bus4us_client_sms_in_4_hours` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-08-29-04" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi` ADD COLUMN `bus4us_client_sms_on_place` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-08-29-05" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_online` ADD COLUMN `bus4us_client_sms_on_place` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-08-29-06" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_archive` ADD COLUMN `bus4us_client_sms_on_place` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-08-29-07" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_online` ADD COLUMN `client` INT UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2016-08-29-08" author="dev1">
+    <sql><![CDATA[
+      UPDATE `params` SET name = 'ONE_SIGNAL_AUTH_DRIVER_APP' WHERE id = 122;	  
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2016-08-29-09" author="dev1">
+    <sql><![CDATA[
+	  UPDATE `params` SET name = 'ONE_SIGNAL_ID_DRIVER_APP'   WHERE id = 123;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2016-08-29-10" author="dev1">
+    <sql><![CDATA[
+	  INSERT INTO `params` (id, value, name) values ('141', '', 'ONE_SIGNAL_AUTH_CLIENT_APP');
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2016-08-29-11" author="dev1">
+    <sql><![CDATA[
+	  INSERT INTO `params` (id, value, name) values ('142', '', 'ONE_SIGNAL_ID_CLIENT_APP');
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-08-29-12" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `services_citys` ADD COLUMN `director` VARCHAR(128) NOT NULL DEFAULT '';
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-08-29-13" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `services_citys` ADD COLUMN `accountant` VARCHAR(128) NOT NULL DEFAULT '';
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2016-08-29-14" author="dev1">
+    <sql><![CDATA[
+	  INSERT INTO `params` (id, value, name) values ('143', '', 'BUS4US_SIGN');
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-08-29-15" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi` ADD COLUMN `bus4us_driver_sms_in_4_hours` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-08-29-16" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_online` ADD COLUMN `bus4us_driver_sms_in_4_hours` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-08-29-17" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_archive` ADD COLUMN `bus4us_driver_sms_in_4_hours` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
