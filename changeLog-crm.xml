@@ -3056,4 +3056,49 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `zakazi_archive` ADD COLUMN `bus4us_driver_sms_in_4_hours` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-08-30-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi` ADD COLUMN `bus4us_driver_sms_order_assigned` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-08-30-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_online` ADD COLUMN `bus4us_driver_sms_order_assigned` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-08-30-03" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_archive` ADD COLUMN `bus4us_driver_sms_order_assigned` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-08-30-04" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi` ADD COLUMN `assigned_by_webcrm` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-08-30-05" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_online` ADD COLUMN `assigned_by_webcrm` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-08-30-06" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_archive` ADD COLUMN `assigned_by_webcrm` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-08-30-07" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi` ADD COLUMN `service_bill` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-08-30-08" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_online` ADD COLUMN `service_bill` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-08-30-09" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_archive` ADD COLUMN `service_bill` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
