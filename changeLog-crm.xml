@@ -3171,4 +3171,12 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `vehicle_type` ADD COLUMN `sequence` INT(1) NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-09-04-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `services_citys` DROP COLUMN `license`,
+	                               DROP COLUMN `org_card`,
+								   DROP COLUMN `company_charter`,
+								   DROP COLUMN `entity`;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
