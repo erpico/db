@@ -3179,4 +3179,10 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 								   DROP COLUMN `entity`;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-09-06-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `client_info` MODIFY COLUMN `passport_when` DATE NOT NULL DEFAULT '0000-00-00',
+	                            MODIFY_COLUMN `birthdate`     DATE NOT NULL DEFAULT '0000-00-00';
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
