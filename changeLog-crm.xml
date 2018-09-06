@@ -3185,4 +3185,14 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 	                            MODIFY COLUMN `birthdate`     DATE NOT NULL DEFAULT '0000-00-00';
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-09-06-02" author="dev1">
+    <sql><![CDATA[
+      INSERT INTO `params` (id, value, name) values ('144', '', 'YANDEX_DISTANCE_MATRIX_KEY');
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-09-06-03" author="dev1">
+    <sql><![CDATA[
+      INSERT INTO `params` (id, value, name) values ('145', '', 'GOOGLE_DISTANCE_MATRIX_KEY');
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
