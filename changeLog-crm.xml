@@ -3195,4 +3195,19 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       INSERT INTO `params` (id, value, name) values ('145', '', 'GOOGLE_DISTANCE_MATRIX_KEY');
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-09-06-04" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `orders_reviews` ADD COLUMN `vehicle_rating` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-09-06-05" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `orders_reviews` ADD COLUMN `decision` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-09-06-06" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `orders_reviews` ADD COLUMN `percentage` DECIMAL(10,2) UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
