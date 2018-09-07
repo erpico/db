@@ -3210,4 +3210,14 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `orders_reviews` ADD COLUMN `percentage` DECIMAL(10,2) UNSIGNED NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-09-06-07" author="dev1">
+    <sql><![CDATA[
+      CREATE TABLE `reviews_photos`
+      (
+        `review_id` INT UNSIGNED NOT NULL DEFAULT 0,
+        `photo`     VARCHAR(512) NOT NULL DEFAULT '',
+		INDEX `review_id_idx` (`review_id` ASC)		
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
