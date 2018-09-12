@@ -3230,4 +3230,15 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `client_info` ADD INDEX `client_id_idx` (`client_id` ASC);
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-09-11-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `services_citys` DROP COLUMN `active`,
+	                               DROP COLUMN `blocked`;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-09-11-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `services_citys` ADD COLUMN `state` TINYINT(1) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
