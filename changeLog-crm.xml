@@ -3241,4 +3241,11 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `services_citys` ADD COLUMN `state` TINYINT(1) NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-09-19-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `executor_alarm` ADD UNIQUE INDEX `executor_idx`  (`executor_id` ASC),
+                                   ADD COLUMN       `decision_time` INT UNSIGNED NOT NULL DEFAULT 0,
+                                   ADD COLUMN       `reset_time`    DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
