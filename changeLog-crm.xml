@@ -3278,4 +3278,9 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       INSERT INTO `params` (id, value, name) values ('149', '', 'DRIVER_MOBILE_CONNECTION_STATE2');
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-09-21-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `executor_alarm` ADD COLUMN `push_sent` TINYINT(1) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
