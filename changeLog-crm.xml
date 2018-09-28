@@ -3280,10 +3280,55 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
   </changeSet>
   <changeSet id="2018-09-21-01" author="dev1">
     <sql><![CDATA[
-      ALTER TABLE `executor_alarm` ADD COLUMN `push_sent` TINYINT(1) NOT NULL DEFAULT 1;
+      ALTER TABLE `executor_alarm` ADD COLUMN `push_sent` TINYINT(1) NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
   <changeSet id="2018-09-26-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `routes` ADD COLUMN `push_sent` TINYINT(1) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-09-27-01" author="dev1">
+    <sql><![CDATA[
+      INSERT INTO `params` (id, value, name) values ('150', 'На Ваш заказ %1 назначен автобус %2. Водитель: %3 %4', 'BUS4US_TEXT_TO_CLIENT_IN_4_HOURS');
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-09-27-02" author="dev1">
+    <sql><![CDATA[
+      INSERT INTO `params` (id, value, name) values ('151', 'Водитель выехал на Ваш заказ %1 %2', 'BUS4US_CLIENT_PUSH_CALLING');
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-09-27-03" author="dev1">
+    <sql><![CDATA[
+      INSERT INTO `params` (id, value, name) values ('152', 'Автобус прибыл и ожидает пассажиров', 'BUS4US_CLIENT_PUSH_CALLNOW');
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-09-27-04" author="dev1">
+    <sql><![CDATA[
+      INSERT INTO `params` (id, value, name) values ('153', 'Автобус отправился в путь', 'BUS4US_CLIENT_PUSH_CALLED');
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-09-27-05" author="dev1">
+    <sql><![CDATA[
+      INSERT INTO `params` (id, value, name) values ('154', 'Спасибо за заказ. Bus4us', 'BUS4US_CLIENT_PUSH_FINISH');
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-09-27-06" author="dev1">
+    <sql><![CDATA[
+      INSERT INTO `params` (id, value, name) values ('155', 'На %1 Вам назначен новый заказ %2. Зайдите в приложение BusDriver', 'BUS4US_SMS_TO_DRIVER_SETCAR');
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-09-27-07" author="dev1">
+    <sql><![CDATA[
+      INSERT INTO `params` (id, value, name) values ('156', '%1 y Вас назначен заказ. Начните подачу вовремя! Зайдите в приложение BusDriver', 'BUS4US_SMS_TO_DRIVER_IN_4_HOURS');
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-09-28-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `executor_alarm` DROP COLUMN `push_sent`;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-09-28-02" author="dev1">
     <sql><![CDATA[
       ALTER TABLE `routes` ADD COLUMN `push_sent` TINYINT(1) NOT NULL DEFAULT 1;
     ]]></sql>
