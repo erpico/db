@@ -3330,7 +3330,7 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
   </changeSet>
   <changeSet id="2018-09-28-02" author="dev1">
     <sql><![CDATA[
-      ALTER TABLE `routes` ADD COLUMN `push_sent` TINYINT(1) NOT NULL DEFAULT 1;
+      ALTER TABLE `executor_alarm` ADD COLUMN `push_sent` TINYINT(1) NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
 </databaseChangeLog>
