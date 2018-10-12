@@ -3345,4 +3345,9 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 								   ADD COLUMN `accountant_signature` VARCHAR(256) NOT NULL DEFAULT '';
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-10-12-01" author="dev1">
+    <sql><![CDATA[
+      INSERT INTO `params` (id, value, name) values ('157', '0', 'BUS4US_ADDRESS_ONLY_NAME ');
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
