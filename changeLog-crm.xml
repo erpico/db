@@ -3350,4 +3350,9 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       INSERT INTO `params` (id, value, name) values ('157', '0', 'BUS4US_ADDRESS_ONLY_NAME ');
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-10-15-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `vodils` ADD COLUMN `contract` VARCHAR(256) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
