@@ -331,4 +331,42 @@
       ALTER TABLE `queue` ADD COLUMN `sl` INT(11) NOT NULL DEFAULT '20' AFTER `service_id`;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-09-28-01" author="rap">
+    <sql><![CDATA[
+      CREATE TABLE IF NOT EXISTS `contact_groups` (`id` INT NOT NULL AUTO_INCREMENT, `name` VARCHAR(128) NOT NULL, PRIMARY KEY (`id`));
+      CREATE TABLE IF NOT EXISTS `contact_groups_items` (
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `contact_groups_id` INT NOT NULL,
+        `acl_user_id` INT NULL,
+        `phone` VARCHAR(45) NULL,
+        `queue` VARCHAR(128) NOT NULL,
+        PRIMARY KEY (`id`),
+        INDEX `group_id_idx` (`contact_groups_id` ASC),
+        CONSTRAINT `group_id`
+          FOREIGN KEY (`contact_groups_id`)
+          REFERENCES `contact_groups` (`id`)
+          ON DELETE NO ACTION
+          ON UPDATE NO ACTION);
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-09-28-02" author="rap">
+    <sql><![CDATA[
+      ALTER TABLE `contact_groups_items` ADD COLUMN `queue_id` INT NULL AFTER `phone`;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-10-17-01" author="rap">
+    <sql><![CDATA[
+  CREATE TABLE `queue_agent_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `acl_user_id` int(11) DEFAULT NULL,
+  `agent` varchar(45) DEFAULT NULL,
+  `action` varchar(45) DEFAULT NULL,
+  `queue` varchar(45) DEFAULT NULL,
+  `ifc` varchar(45) DEFAULT NULL,
+  `penalty` varchar(45) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
