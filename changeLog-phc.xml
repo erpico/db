@@ -356,7 +356,7 @@
   </changeSet>
   <changeSet id="2018-10-17-01" author="rap">
     <sql><![CDATA[
-  CREATE TABLE `queue_agent_log` (
+  CREATE TABLE IF NOT EXISTS `queue_agent_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `acl_user_id` int(11) DEFAULT NULL,
   `agent` varchar(45) DEFAULT NULL,
