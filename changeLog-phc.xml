@@ -369,4 +369,12 @@
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-10-17-01" author="rap">
+    <sql><![CDATA[
+  CREATE TABLE IF NOT EXISTS `contact_groups_queues` (
+  `contact_groups_id` INT NOT NULL,
+  `queue_id` INT NOT NULL,
+  PRIMARY KEY (`contact_groups_id`, `queue_id`));
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
