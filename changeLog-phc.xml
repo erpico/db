@@ -377,4 +377,9 @@
   PRIMARY KEY (`contact_groups_id`, `queue_id`));
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-10-28-01" author="rap">
+    <sql><![CDATA[
+  ALTER TABLE `checklists` ADD COLUMN `weight` INT NULL AFTER `parent_id`;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
