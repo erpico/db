@@ -382,4 +382,9 @@
   ALTER TABLE `checklists` ADD COLUMN `weight` INT NULL AFTER `parent_id`;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-10-28-02" author="rap">
+    <sql><![CDATA[
+  ALTER TABLE `queue_agent_log` ADD COLUMN `time` DATETIME NOT NULL AFTER `id`;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
