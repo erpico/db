@@ -3375,4 +3375,36 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `zakazi_online` ADD COLUMN `new_order_sms_sent` TINYINT(1) NOT NULL DEFAULT 1;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-10-31-01" author="rp">
+    <sql><![CDATA[
+      CREATE TABLE `countries` (
+		  `id` int(11) NOT NULL AUTO_INCREMENT,
+		  `name` varchar(45) DEFAULT NULL,
+		  `description` varchar(45) DEFAULT NULL,
+		  `code` varchar(45) DEFAULT NULL,
+		  `icon` varchar(45) DEFAULT NULL,
+		  PRIMARY KEY (`id`)
+	  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+	  CREATE TABLE `brands` (
+		  `id` int(11) NOT NULL,
+		  `countries_id` int(11) NOT NULL,
+		  `name` varchar(45) DEFAULT NULL,
+		  `code` varchar(45) DEFAULT NULL,
+		  PRIMARY KEY (`id`),
+		  KEY `fk_c_idx` (`countries_id`),
+		  CONSTRAINT `fk_c` FOREIGN KEY (`countries_id`) REFERENCES `countries` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+	  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+	  CREATE TABLE `models` (
+		  `id` int(11) NOT NULL AUTO_INCREMENT,
+		  `brands_id` int(11) DEFAULT NULL,
+		  `name` varchar(45) DEFAULT NULL,
+		  `description` varchar(45) DEFAULT NULL,
+		  `minseats` int(11) DEFAULT NULL,
+		  `maxseats` int(11) DEFAULT NULL,
+		  PRIMARY KEY (`id`),
+		  KEY `brands_id_idx` (`brands_id`),
+		  CONSTRAINT `brands_id` FOREIGN KEY (`brands_id`) REFERENCES `brands` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+	   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
