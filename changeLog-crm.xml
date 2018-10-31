@@ -3407,4 +3407,13 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 	   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
     ]]></sql>
   </changeSet>
+<changeSet id="2018-10-31-02" author="rp">
+    <sql><![CDATA[
+  ALTER TABLE `models` DROP FOREIGN KEY `brands_id`;
+  ALTER TABLE `models` DROP INDEX `brands_id_idx` ;
+  ALTER TABLE `brands` CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT ;
+  ALTER TABLE `models` ADD INDEX `brands_fk_idx` (`brands_id` ASC);
+  ALTER TABLE `models` ADD CONSTRAINT `brands_fk` FOREIGN KEY (`brands_id`) REFERENCES `brands` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
