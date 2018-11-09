@@ -3416,4 +3416,30 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
   ALTER TABLE `models` ADD CONSTRAINT `brands_fk` FOREIGN KEY (`brands_id`) REFERENCES `brands` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-11-09-01" author="dev1">
+    <sql><![CDATA[
+      CREATE TABLE `timezones`
+      (
+        `id`     TINYINT(2) UNSIGNED NOT NULL AUTO_INCREMENT,
+        `name`   VARCHAR(64)         NOT NULL DEFAULT '',
+		`gmt`    TINYINT(2)          NOT NULL DEFAULT 0,
+		PRIMARY KEY (`id`)		
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-11-09-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi` ADD COLUMN `timezone` TINYINT(2) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-11-09-03" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_archive` ADD COLUMN `timezone` TINYINT(2) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-11-09-04" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_online` ADD COLUMN `timezone` TINYINT(2) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
