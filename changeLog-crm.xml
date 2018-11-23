@@ -3467,4 +3467,114 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `vodils` ADD COLUMN `consent` TINYINT(1) NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-11-24-01" author="rp">
+    <sql><![CDATA[
+	  ALTER TABLE `geozones` 
+      ADD COLUMN `parent_id` INT NULL AFTER `id`,
+      ADD COLUMN `formula_id` INT NULL AFTER `active`,
+      ADD COLUMN `tariffs_id` INT NULL AFTER `formula_id`;
+    CREATE TABLE `classifier` (
+      `id` int(11) NOT NULL AUTO_INCREMENT,
+      `name` varchar(255) DEFAULT NULL,
+      `type` int(11) DEFAULT NULL,
+      `active` tinyint(4) DEFAULT '1',
+      PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    CREATE TABLE `classifier_classes` (
+      `classifier_id` int(11) NOT NULL,
+      `busclass_id` int(11) NOT NULL,
+      `from` int(11) DEFAULT NULL,
+      `to` int(11) DEFAULT NULL,
+      PRIMARY KEY (`classifier_id`,`busclass_id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    CREATE TABLE `classifier_condition` (
+      `id` int(11) NOT NULL AUTO_INCREMENT,
+      `classifier_id` int(11) NOT NULL,
+      `option_type` enum('REGULAR','CLASSIFIER') DEFAULT NULL,
+      `option_id` int(11) DEFAULT NULL,
+      `rule` enum('EQUAL','BELLOW','ABOVE','ONEOF') DEFAULT NULL,
+      `value` int(11) DEFAULT NULL,
+      PRIMARY KEY (`id`,`classifier_id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    CREATE TABLE `classifier_condition_values` (
+      `id` int(11) NOT NULL AUTO_INCREMENT,
+      `classifier_condition_id` int(11) NOT NULL,
+      `value` int(11) DEFAULT NULL,
+      PRIMARY KEY (`id`,`classifier_condition_id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    CREATE TABLE `classifier_geozones` (
+      `classifier_id` int(11) NOT NULL,
+      `geozone_id` int(11) NOT NULL,
+      PRIMARY KEY (`classifier_id`,`geozone_id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    CREATE TABLE `classifier_options` (
+      `id` int(11) NOT NULL AUTO_INCREMENT,
+      `name` varchar(255) DEFAULT NULL,
+      `type` enum('integer','float','dictonary') DEFAULT NULL,
+      PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    CREATE TABLE `classifier_options_dictonary` (
+      `id` int(11) NOT NULL AUTO_INCREMENT,
+      `classifier_options_id` int(11) NOT NULL,
+      `value` varchar(255) DEFAULT NULL,
+      `icon` varchar(255) DEFAULT NULL,
+      PRIMARY KEY (`id`,`classifier_options_id`),
+      KEY `fk1_idx` (`classifier_options_id`),
+      CONSTRAINT `fk1` FOREIGN KEY (`classifier_options_id`) REFERENCES `classifier_options` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    CREATE TABLE `formulas` (
+      `id` int(11) NOT NULL,
+      `name` varchar(255) DEFAULT NULL,
+      `formula` text,
+      PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    CREATE TABLE `geozones_destinations` (
+      `id` int(11) NOT NULL AUTO_INCREMENT,
+      `geozones_id` int(11) NOT NULL,
+      `destination_geozones_id` int(11) NOT NULL,
+      `tariffs_id` int(11) DEFAULT NULL,
+      `formulas_id` int(11) DEFAULT NULL,
+      `stops_allowed` tinyint(4) DEFAULT NULL,
+      PRIMARY KEY (`id`,`geozones_id`,`destination_geozones_id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    CREATE TABLE `geozones_tariffs_options` (
+      `id` int(11) NOT NULL AUTO_INCREMENT,
+      `geozones_id` int(11) NOT NULL,
+      `option` int(11) DEFAULT NULL,
+      `type` int(11) DEFAULT NULL,
+      `class` int(11) DEFAULT NULL,
+      `value` decimal(10,2) DEFAULT NULL,
+      PRIMARY KEY (`id`,`geozones_id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    CREATE TABLE `geozones_destinations_tariffs_options` (
+      `id` int(11) NOT NULL AUTO_INCREMENT,
+      `geozones_destinations_id` int(11) NOT NULL,
+      `option` int(11) DEFAULT NULL,
+      `type` int(11) DEFAULT NULL,
+      `class` int(11) DEFAULT NULL,
+      `value` decimal(10,2) DEFAULT NULL,
+      PRIMARY KEY (`id`,`geozones_destinations_id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    CREATE TABLE `tariffs` (
+      `id` int(11) NOT NULL AUTO_INCREMENT,
+      `name` varchar(255) DEFAULT NULL,
+      PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    CREATE TABLE `tariffs_options` (
+      `id` int(11) NOT NULL AUTO_INCREMENT,
+      `tariffs_id` int(11) NOT NULL,
+      `option` int(11) DEFAULT NULL,
+      `type` int(11) DEFAULT NULL,
+      `class` int(11) DEFAULT NULL,
+      `value` decimal(10,2) DEFAULT NULL,
+      PRIMARY KEY (`id`,`tariffs_id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    CREATE TABLE `variables` (
+      `id` int(11) NOT NULL,
+      `code` varchar(255) DEFAULT NULL,
+      `name` varchar(255) DEFAULT NULL,
+      PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>

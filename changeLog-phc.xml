@@ -387,4 +387,9 @@
   ALTER TABLE `queue_agent_log` ADD COLUMN `time` DATETIME NOT NULL AFTER `id`;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-11-22-01" author="rp">
+    <sql><![CDATA[
+	INSERT INTO `acl_rule` (`name`, `handle`) VALUES ('Управление статусами других пользователей', 'acdclient.allowcontrolotherusers');
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
