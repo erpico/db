@@ -3582,4 +3582,9 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `classifier_condition` ADD COLUMN `weight` INT NULL AFTER `value`;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-12-05-01" author="rp">
+    <sql><![CDATA[
+      ALTER TABLE `classifier_condition` ADD COLUMN `independed` TINYINT NULL DEFAULT 0 AFTER `rule`;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
