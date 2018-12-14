@@ -3597,4 +3597,9 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 	  PRIMARY KEY (`id`));
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-12-14-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `vehicle` ADD COLUMN `geozone` INT UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
