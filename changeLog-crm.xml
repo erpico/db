@@ -3602,4 +3602,15 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `vehicle` ADD COLUMN `geozone` INT UNSIGNED NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-12-18-01" author="dev1">
+    <sql><![CDATA[
+      CREATE TABLE `timezone_data`
+	  (
+	    `id`          INT NOT NULL DEFAULT 0,
+	    `region_code` VARCHAR(64) NOT NULL DEFAULT '',
+	    `city_code`   VARCHAR(64) NOT NULL DEFAULT '',
+	    PRIMARY KEY (`id`)
+	  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
