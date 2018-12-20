@@ -3653,4 +3653,9 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `zakazi_online` ADD COLUMN `bus4us_client_push_20min_after_payment` TINYINT(1) NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-12-20-10" author="rp">
+    <sql><![CDATA[
+      ALTER TABLE classifier_condition CHANGE COLUMN weight weight DECIMAL(10,2) NULL DEFAULT NULL;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
