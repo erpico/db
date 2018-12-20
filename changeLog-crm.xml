@@ -3613,4 +3613,44 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 	  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-12-20-01" author="dev1">
+    <sql><![CDATA[
+      INSERT INTO `params` (id, value, name) values ('159', 'Извините, мы еще ищем Вам автобус', 'BUS4US_TEXT_TO_CLIENT_20_MIN_AFTER_PAYMENT');
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-12-20-02" author="dev1">
+    <sql><![CDATA[
+      INSERT INTO `params` (id, value, name) values ('160', 'Извините, сейчас в системе нет подходящих автобусов. Попробуйте заново сделать заказ смягчив условие поиска. Оплаченные деньги за заказ будут возвращены на Вашу карту', 'BUS4US_TEXT_TO_CLIENT_40_MIN_AFTER_PAYMENT');
+    ]]></sql>
+  </changeSet>  
+  <changeSet id="2018-12-20-03" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi` ADD COLUMN `bus4us_client_push_40min_after_payment` TINYINT(1) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-12-20-04" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_archive` ADD COLUMN `bus4us_client_push_40min_after_payment` TINYINT(1) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-12-20-05" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_online` ADD COLUMN `bus4us_client_push_40min_after_payment` TINYINT(1) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+    <changeSet id="2018-12-20-07" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi` ADD COLUMN `bus4us_client_push_20min_after_payment` TINYINT(1) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-12-20-08" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_archive` ADD COLUMN `bus4us_client_push_20min_after_payment` TINYINT(1) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-12-20-09" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_online` ADD COLUMN `bus4us_client_push_20min_after_payment` TINYINT(1) NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
