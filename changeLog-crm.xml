@@ -3658,4 +3658,41 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE classifier_condition CHANGE COLUMN weight weight DECIMAL(10,2) NULL DEFAULT NULL;
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-12-27-01" author="dev1">
+    <sql><![CDATA[
+      CREATE TABLE IF NOT EXISTS `country`
+      (
+        `country_code` char(2) COLLATE utf8_bin DEFAULT NULL,
+        `country_name` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+        KEY `idx_country_code` (`country_code`)
+      ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+    ]]></sql>
+  </changeSet> 
+  <changeSet id="2018-12-27-02" author="dev1">
+    <sql><![CDATA[
+      CREATE TABLE IF NOT EXISTS `timezone`
+       (
+        `zone_id` int(10) NOT NULL,
+        `abbreviation` varchar(6) COLLATE utf8_bin NOT NULL,
+        `time_start` decimal(11,0) NOT NULL,
+        `gmt_offset` int(11) NOT NULL,
+        `dst` char(1) COLLATE utf8_bin NOT NULL,
+        KEY `idx_zone_id` (`zone_id`),
+        KEY `idx_time_start` (`time_start`)
+      ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2018-12-27-03" author="dev1">
+    <sql><![CDATA[
+      CREATE TABLE IF NOT EXISTS `zone`
+       (
+        `zone_id` int(10) NOT NULL AUTO_INCREMENT,
+        `country_code` char(2) COLLATE utf8_bin NOT NULL,
+        `zone_name` varchar(35) COLLATE utf8_bin NOT NULL,
+        PRIMARY KEY (`zone_id`),
+        KEY `idx_country_code` (`country_code`),
+        KEY `idx_zone_name` (`zone_name`)
+      ) ENGINE=MyISAM AUTO_INCREMENT=425 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+    ]]></sql>
+  </changeSet>  
 </databaseChangeLog>
