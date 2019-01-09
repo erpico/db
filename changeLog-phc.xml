@@ -392,4 +392,15 @@
 	INSERT INTO `acl_rule` (`name`, `handle`) VALUES ('Управление статусами других пользователей', 'acdclient.allowcontrolotherusers');
     ]]></sql>
   </changeSet>
+  <changeSet id="2018-11-22-01" author="rp">
+    <sql><![CDATA[
+      ALTER TABLE `cdr` CHANGE COLUMN `uniqueid` `uniqueid` VARCHAR(64) NOT NULL DEFAULT '' ;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2019-01-09-01" author="rp">
+    <sql><![CDATA[
+	  ALTER TABLE nps_answers ADD COLUMN answer_type INT(11);
+	  ALTER TABLE `nps` ADD COLUMN `name` VARCHAR(255) NULL AFTER `phone`;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
