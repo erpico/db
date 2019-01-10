@@ -399,6 +399,32 @@
   </changeSet>
   <changeSet id="2019-01-09-01" author="rp">
     <sql><![CDATA[
+	  CREATE TABLE IF NOT EXISTS `nps` (
+	  `id` int(11) NOT NULL AUTO_INCREMENT,
+	  `phone` varchar(255) DEFAULT NULL,
+	  `buyer_status` varchar(45) DEFAULT NULL,
+	  `lastbuy_date` varchar(45) DEFAULT NULL,
+	  `city` varchar(45) DEFAULT NULL,
+	  `filial` varchar(45) DEFAULT NULL,
+	  `created` datetime DEFAULT NULL,
+	  `state` int(11) DEFAULT NULL,
+	  `updated` datetime DEFAULT NULL,
+	  `called` datetime DEFAULT NULL,
+	  `callid` varchar(64) DEFAULT NULL,
+	  PRIMARY KEY (`id`)
+	) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+	CREATE TABLE IF NOT EXISTS `nps_answers` (
+	  `id` int(11) NOT NULL AUTO_INCREMENT,
+	  `nps_id` int(11) NOT NULL,
+	  `question_id` int(11) DEFAULT NULL,
+	  `answer` varchar(128) DEFAULT NULL,
+	  `time` datetime DEFAULT NULL,
+	  PRIMARY KEY (`id`,`nps_id`)
+	) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2019-01-09-01" author="rp">
+    <sql><![CDATA[
 	  ALTER TABLE nps_answers ADD COLUMN answer_type INT(11);
 	  ALTER TABLE `nps` ADD COLUMN `name` VARCHAR(255) NULL AFTER `phone`;
     ]]></sql>
