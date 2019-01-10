@@ -397,7 +397,7 @@
       ALTER TABLE `cdr` CHANGE COLUMN `uniqueid` `uniqueid` VARCHAR(64) NOT NULL DEFAULT '' ;
     ]]></sql>
   </changeSet>
-  <changeSet id="2019-01-09-01" author="rp">
+  <changeSet id="2018-12-31-01" author="rp">
     <sql><![CDATA[
 	  CREATE TABLE IF NOT EXISTS `nps` (
 	  `id` int(11) NOT NULL AUTO_INCREMENT,
