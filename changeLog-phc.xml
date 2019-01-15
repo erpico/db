@@ -429,4 +429,9 @@
 	  ALTER TABLE `nps` ADD COLUMN `name` VARCHAR(255) NULL AFTER `phone`;
     ]]></sql>
   </changeSet>
+  <changeSet id="2019-01-15-01" author="rp">
+    <sql><![CDATA[
+	  alter table nps add column motivational_p varchar(225);
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
