@@ -3701,4 +3701,9 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
 		alter table geozones_destinations_tariffs_options add option_type varchar(25);
     ]]></sql>
   </changeSet>  
+  <changeSet id="2019-01-16-02" author="rp">
+    <sql><![CDATA[
+        ALTER TABLE `variables` CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT ;
+    ]]></sql>
+  </changeSet>  
 </databaseChangeLog>
