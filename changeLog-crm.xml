@@ -3695,4 +3695,10 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ) ENGINE=MyISAM AUTO_INCREMENT=425 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
     ]]></sql>
   </changeSet>  
+  <changeSet id="2019-01-16-01" author="a.chernitcov">
+    <sql><![CDATA[
+  	    alter table geozones_tariffs_options add option_type varchar(25);
+		alter table geozones_destinations_tariffs_options add option_type varchar(25);
+    ]]></sql>
+  </changeSet>  
 </databaseChangeLog>
