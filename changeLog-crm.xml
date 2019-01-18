@@ -3706,6 +3706,11 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
         ALTER TABLE `variables` CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT ;
     ]]></sql>
   </changeSet>  
+  <changeSet id="2019-01-17-01" author="a.chernitcov">
+    <sql><![CDATA[
+  	    ALTER TABLE `tariffs_options` ADD `option_type` VARCHAR(25);
+    ]]></sql>
+  </changeSet>  
   <changeSet id="2019-01-18-01" author="rp">
     <sql><![CDATA[
 		ALTER TABLE `formulas` CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT ;
