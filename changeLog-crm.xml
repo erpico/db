@@ -3715,5 +3715,30 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
     <sql><![CDATA[
 		ALTER TABLE `formulas` CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT ;
     ]]></sql>
-  </changeSet>  
+  </changeSet>
+  <changeSet id="2019-01-29-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi` MODIFY COLUMN `timezone` INT NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2019-01-29-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_archive` MODIFY COLUMN `timezone` INT NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2019-01-29-03" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_online` MODIFY COLUMN `timezone` INT NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2019-01-29-04" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `vodils` MODIFY COLUMN `timezone` INT NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2019-01-29-05" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `services_citys` MODIFY COLUMN `timezone` INT NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
