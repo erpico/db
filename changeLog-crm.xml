@@ -3741,7 +3741,6 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `services_citys` MODIFY COLUMN `timezone` INT NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
-    </changeSet>
   <changeSet id="2019-02-07-01" author="dev1">
     <sql><![CDATA[
       DROP TABLE `timezones`;
