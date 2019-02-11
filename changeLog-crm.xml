@@ -3746,4 +3746,47 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       DROP TABLE `timezones`;
     ]]></sql>
   </changeSet>
+  <changeSet id="2019-02-11-01" author="dev1">
+    <sql><![CDATA[
+      DROP TABLE IF EXISTS `timezone`;
+      CREATE TABLE `timezone`
+      (
+        `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+        `zone_id` int(10) NOT NULL,
+        `abbreviation` varchar(6) COLLATE utf8_bin NOT NULL,
+        `time_start` decimal(11,0) NOT NULL,
+        `gmt_offset` int(11) NOT NULL,
+        `dst` char(1) COLLATE utf8_bin NOT NULL,
+		PRIMARY KEY (`id`),
+        KEY `idx_zone_id` (`zone_id`),
+        KEY `idx_time_start` (`time_start`)
+      ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2019-02-11-02" author="dev1">
+    <sql><![CDATA[
+      DROP TABLE IF EXISTS `timezone_data`;
+      CREATE TABLE `timezone_data`
+      (
+        `id`          INT UNSIGNED NOT NULL AUTO_INCREMENT,
+        `region_code` VARCHAR(64) NOT NULL DEFAULT '',
+        `city_code`   VARCHAR(64) NOT NULL DEFAULT '',
+        `timezone_id` INT NOT NULL DEFAULT 0,
+        PRIMARY KEY (`id`)
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    ]]></sql>
+  </changeSet>
+    <changeSet id="2019-02-11-03" author="dev1">
+    <sql><![CDATA[
+	  DROP TABLE IF EXISTS `country`;
+      CREATE TABLE IF NOT EXISTS `country`
+      (
+	    `id` INT NOT NULL AUTO_INCREMENT,
+        `country_code` char(2) COLLATE utf8_bin DEFAULT NULL,
+        `country_name` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+		PRIMARY KEY (`id`),
+        KEY `idx_country_code` (`country_code`)
+      ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
