@@ -3789,4 +3789,14 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
     ]]></sql>
   </changeSet>
+  <changeSet id="2019-02-15-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `clients` ADD COLUMN `lk_login` VARCHAR(128) NOT NULL DEFAULT '';
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2019-02-15-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `clients` ADD COLUMN `lk_password` VARCHAR(128) NOT NULL DEFAULT '';
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
