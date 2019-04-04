@@ -434,6 +434,11 @@
 	  alter table nps add column motivational_p varchar(225);
     ]]></sql>
   </changeSet>
+  <changeSet id="2019-01-17-01" author="rp">
+    <sql><![CDATA[
+	  ALTER TABLE `nps` ADD COLUMN `channel` VARCHAR(255) NULL DEFAULT NULL ;
+    ]]></sql>
+  </changeSet>
   <changeSet id="2019-01-18-01" author="rp">
     <sql><![CDATA[
 	  ALTER TABLE `nps` CHANGE COLUMN `channel` `channel` VARCHAR(255) NULL DEFAULT NULL ;
