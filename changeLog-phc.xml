@@ -439,4 +439,9 @@
 	  ALTER TABLE `nps` CHANGE COLUMN `channel` `channel` VARCHAR(255) NULL DEFAULT NULL ;
     ]]></sql>
   </changeSet>
+  <changeSet id="2019-04-04-01" author="rp">
+    <sql><![CDATA[
+      INSERT INTO `cfg_setting` (`handle`, `val`) VALUES ('cti.windows.autologout', '0');
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
