@@ -3849,4 +3849,19 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `zakazi_archive` ADD COLUMN `btone_early_finishing` TINYINT(1) NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
+  <changeSet id="2019-04-27-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi` ADD COLUMN `previous_service` INT UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2019-04-27-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_archive` ADD COLUMN `previous_service` INT UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2019-04-27-03" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_online` ADD COLUMN `previous_service` INT UNSIGNED NOT NULL DEFAULT 0;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
