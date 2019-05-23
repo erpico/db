@@ -449,4 +449,9 @@
       INSERT INTO `cfg_setting` (`handle`, `val`) VALUES ('cti.windows.autologout', '0');
     ]]></sql>
   </changeSet>
+  <changeSet id="2019-05-91-02" author="rp">
+    <sql><![CDATA[
+      ALTER TABLE `cdr` ADD COLUMN `recordingfile` VARCHAR(1024) NOT NULL DEFAULT '' ;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
