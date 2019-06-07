@@ -3864,4 +3864,19 @@ ALTER TABLE `params` CHANGE COLUMN `service_id` `service_id` INT(11) NOT NULL DE
       ALTER TABLE `zakazi_online` ADD COLUMN `previous_service` INT UNSIGNED NOT NULL DEFAULT 0;
     ]]></sql>
   </changeSet>
+  <changeSet id="2019-06-07-01" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi` ADD COLUMN `local_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2019-06-07-02" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_archive` ADD COLUMN `local_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2019-06-07-03" author="dev1">
+    <sql><![CDATA[
+      ALTER TABLE `zakazi_online` ADD COLUMN `local_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
