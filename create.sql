@@ -447,19 +447,3 @@ CREATE TABLE `cdr` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE `acl_user_phone` (
-  `id` INT NOT NULL,
-  `phone` VARCHAR(45) NOT NULL,
-  `model` INT NULL,
-  `mac` VARCHAR(17) NULL,
-  `user_id` INT NOT NULL,
-  `login` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
-  `rules` VARCHAR(45) NULL,
-  `default_phone` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `phone_UNIQUE` (`phone` ASC),
-  UNIQUE INDEX `login_UNIQUE` (`login` ASC))
- ENGINE=MyISAM
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
