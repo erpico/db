@@ -454,4 +454,27 @@
       ALTER TABLE `cdr` ADD COLUMN `recordingfile` VARCHAR(1024) NOT NULL DEFAULT '' ;
     ]]></sql>
   </changeSet>
+    <changeSet id="2019-07-29-01" author="andrey.mrthod">
+    <sql><![CDATA[
+      CREATE TABLE `acl_user_phone` (
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `phone` VARCHAR(45) NULL,
+        `model` INT NOT NULL,
+        `mac` VARCHAR(17) NULL,
+        `user_id` INT(10) NOT NULL,
+        `login` VARCHAR(45) NOT NULL,
+        `password` VARCHAR(45) NOT NULL,
+        `rules` INT(10) NULL,
+        `default_phone` VARCHAR(45) NULL,
+        PRIMARY KEY (`id`),
+        UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+        INDEX `user_id` (`user_id` ASC))
+      ENGINE = InnoDB
+      DEFAULT CHARACTER SET = utf8
+      COLLATE = utf8_bin;
+      ALTER TABLE `acl_user` ENGINE = InnoDB ;
+      ALTER TABLE `acl_user` ADD INDEX `id` (`id` ASC);
+      ALTER TABLE `acl_user_phone` ADD FOREIGN KEY (user_id)  REFERENCES acl_user (id);
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
