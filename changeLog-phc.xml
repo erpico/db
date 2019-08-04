@@ -471,7 +471,7 @@
       INDEX `user_id` (`user_id` ASC),
       CONSTRAINT `fk_id`
       FOREIGN KEY (`user_id`)
-      REFERENCES `phc`.`acl_user` (`id`)
+      REFERENCES `acl_user` (`id`)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
       )
