@@ -459,5 +459,52 @@
         ALTER TABLE `queue_cdr` ADD COLUMN `record_file` VARCHAR(1024) AFTER `outgoing`;
     ]]></sql>
   </changeSet>
-
+  <changeSet id="2019-08-03-01" author="rp">
+    <sql><![CDATA[
+    ALTER TABLE `acl_user` ENGINE = InnoDB ;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2019-08-05-01" author="andrey.mrthod">
+    <sql><![CDATA[
+      CREATE TABLE `acl_user_phone` (
+      `id` INT NOT NULL AUTO_INCREMENT,
+      `phone` VARCHAR(45) NULL,
+      `model` INT NOT NULL,
+      `mac` VARCHAR(17) NULL,
+      `user_id` INT(10) UNSIGNED  NOT NULL,
+      `login` VARCHAR(45) NOT NULL,
+      `password` VARCHAR(45) NOT NULL,
+      `rules` INT(10) NULL,
+      `default_phone` VARCHAR(45) NULL,
+      PRIMARY KEY (`id`),
+      UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+      INDEX `user_id` (`user_id` ASC),
+      CONSTRAINT `fk_id`
+      FOREIGN KEY (`user_id`)
+      REFERENCES `acl_user` (`id`)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+      )
+      ENGINE = InnoDB
+      CHARACTER SET = utf8
+      COLLATE = utf8_general_ci;
+    ]]></sql>
+  </changeSet>
+    <changeSet id="2019-08-05-02" author="andrey.mrthod">
+    <sql><![CDATA[
+      ALTER TABLE `acl_user_phone` 
+    DROP FOREIGN KEY `fk_id`;
+    ALTER TABLE `acl_user_phone` 
+    CHANGE COLUMN `model` `model` INT(11) NULL ,
+    CHANGE COLUMN `user_id` `user_id` INT(10) UNSIGNED NULL ,
+    CHANGE COLUMN `login` `login` VARCHAR(45) NULL ,
+    CHANGE COLUMN `password` `password` VARCHAR(45) NULL ;
+    ALTER TABLE `acl_user_phone` 
+    ADD CONSTRAINT `fk_id`
+      FOREIGN KEY (`user_id`)
+      REFERENCES `acl_user` (`id`)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
