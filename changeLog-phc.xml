@@ -454,4 +454,10 @@
       ALTER TABLE `cdr` ADD COLUMN `recordingfile` VARCHAR(1024) NOT NULL DEFAULT '' ;
     ]]></sql>
   </changeSet>
+  <changeSet id="2019-06-01-01" author="rp">
+    <sql><![CDATA[
+        ALTER TABLE `queue_cdr` ADD COLUMN `record_file` VARCHAR(1024) AFTER `outgoing`;
+    ]]></sql>
+  </changeSet>
+
 </databaseChangeLog>
