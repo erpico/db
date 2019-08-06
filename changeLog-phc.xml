@@ -490,7 +490,7 @@
       COLLATE = utf8_general_ci;
     ]]></sql>
   </changeSet>
-    <changeSet id="2019-08-05-02" author="andrey.mrthod">
+  <changeSet id="2019-08-05-02" author="andrey.mrthod">
     <sql><![CDATA[
       ALTER TABLE `acl_user_phone` 
     DROP FOREIGN KEY `fk_id`;
@@ -505,6 +505,12 @@
       REFERENCES `acl_user` (`id`)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2019-08-06-01" author="andrey.mrthod">
+    <sql><![CDATA[
+    ALTER TABLE `queue`
+    ADD COLUMN `pattern_id` INT(11) NULL DEFAULT 0 AFTER `sl`;
     ]]></sql>
   </changeSet>
 </databaseChangeLog>
