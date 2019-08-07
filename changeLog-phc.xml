@@ -533,4 +533,17 @@
     DEFAULT CHARACTER SET = utf8;
     ]]></sql>
   </changeSet>
+  <changeSet id="2019-08-07-03" author="andrey.mrthod">
+    <sql><![CDATA[
+    ALTER TABLE `acl_user_phone` 
+    CHANGE COLUMN `model` `model` VARCHAR(45) NULL DEFAULT NULL ,
+    CHANGE COLUMN `rules` `rules` VARCHAR(45) NULL DEFAULT NULL ;
+    ]]></sql>
+  </changeSet>
+  <changeSet id="2019-08-07-04" author="andrey.mrthod">
+    <sql><![CDATA[
+    ALTER TABLE `peers` 
+    CHANGE COLUMN `rules` `rules` VARCHAR(45) NULL DEFAULT NULL ;
+    ]]></sql>
+  </changeSet>  
 </databaseChangeLog>
