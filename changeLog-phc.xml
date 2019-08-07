@@ -513,4 +513,10 @@
     ADD COLUMN `pattern_id` INT(11) NULL DEFAULT 0 AFTER `sl`;
     ]]></sql>
   </changeSet>
+  <changeSet id="2019-08-07-01" author="andrey.mrthod">
+    <sql><![CDATA[
+    ALTER TABLE `queue` 
+    CHANGE COLUMN `pattern_id` `pattern` VARCHAR(225) NULL DEFAULT '0' ;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
