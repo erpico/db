@@ -519,4 +519,18 @@
     CHANGE COLUMN `pattern_id` `pattern` VARCHAR(225) NULL DEFAULT '0' ;
     ]]></sql>
   </changeSet>
+   <changeSet id="2019-08-07-02" author="andrey.mrthod">
+    <sql><![CDATA[
+     CREATE TABLE `peers` (
+      `id` INT(11) NOT NULL AUTO_INCREMENT,
+      `provider` VARCHAR(45) NULL,
+      `login` VARCHAR(45) NULL,
+      `password` VARCHAR(64) NULL,
+      `phone` VARCHAR(45) NULL,
+      `rules` INT(11) NULL,
+      PRIMARY KEY (`id`))
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8;
+    ]]></sql>
+  </changeSet>
 </databaseChangeLog>
