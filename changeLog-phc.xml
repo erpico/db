@@ -545,5 +545,14 @@
     ALTER TABLE `peers` 
     CHANGE COLUMN `rules` `rules` VARCHAR(45) NULL DEFAULT NULL ;
     ]]></sql>
-  </changeSet>  
+  </changeSet> 
+  <changeSet id="2019-08-08-01" author="andrey.mrthod">
+    <sql><![CDATA[
+    ALTER TABLE `peers` 
+    ADD COLUMN `name` VARCHAR(45) NULL AFTER `rules`,
+    ADD COLUMN `fullname` VARCHAR(45) NULL AFTER `name`,
+    ADD COLUMN `host` VARCHAR(45) NULL AFTER `fullname`,
+    ADD COLUMN `port` INT(11) NULL AFTER `host`;
+    ]]></sql>
+  </changeSet> 
 </databaseChangeLog>
