@@ -449,6 +449,68 @@
       INSERT INTO `cfg_setting` (`handle`, `val`) VALUES ('cti.windows.autologout', '0');
     ]]></sql>
   </changeSet>
+  <changeSet id="2019-05-01-01" author="rp">
+    <sql><![CDATA[
+      ALTER TABLE `cdr` 
+        CHANGE COLUMN `user_id` `user_id` INT(10) NULL DEFAULT '0' ,
+        CHANGE COLUMN `calldate` `calldate` DATETIME NULL,
+        CHANGE COLUMN `name` `name` VARCHAR(128) NULL DEFAULT '' ,
+        CHANGE COLUMN `clid` `clid` VARCHAR(80) NULL DEFAULT '' ,
+        CHANGE COLUMN `src` `src` VARCHAR(80) NULL DEFAULT '' ,
+        CHANGE COLUMN `dst` `dst` VARCHAR(80) NULL DEFAULT '' ,
+        CHANGE COLUMN `dst_bill` `dst_bill` VARCHAR(64) NULL DEFAULT '' ,
+        CHANGE COLUMN `dcontext` `dcontext` VARCHAR(80) NULL DEFAULT '' ,
+        CHANGE COLUMN `channel` `channel` VARCHAR(80) NULL DEFAULT '' ,
+        CHANGE COLUMN `dstchannel` `dstchannel` VARCHAR(80) NULL DEFAULT '' ,
+        CHANGE COLUMN `lastapp` `lastapp` VARCHAR(80) NULL DEFAULT '' ,
+        CHANGE COLUMN `lastdata` `lastdata` VARCHAR(80) NULL DEFAULT '' ,
+        CHANGE COLUMN `duration` `duration` INT(11) NULL DEFAULT '0' ,
+        CHANGE COLUMN `billsec` `billsec` INT(11) NULL DEFAULT '0' ,
+        CHANGE COLUMN `ratesec` `ratesec` INT(11) NULL DEFAULT '0' ,
+        CHANGE COLUMN `disposition` `disposition` VARCHAR(45) NULL DEFAULT '' ,
+        CHANGE COLUMN `amaflags` `amaflags` INT(11) NULL DEFAULT '0' ,
+        CHANGE COLUMN `accountcode` `accountcode` VARCHAR(80) NULL DEFAULT '' ,
+        CHANGE COLUMN `uniqueid` `uniqueid` VARCHAR(64) NULL DEFAULT '' ,
+        CHANGE COLUMN `userfield` `userfield` VARCHAR(255) NULL DEFAULT '' ,
+        CHANGE COLUMN `rate` `rate` DECIMAL(8,5) NULL DEFAULT '0.00000' ,
+        CHANGE COLUMN `cost` `cost` DECIMAL(8,5) NULL DEFAULT '0.00000' ,
+        CHANGE COLUMN `bstep` `bstep` VARCHAR(16) NULL DEFAULT '' ,
+        CHANGE COLUMN `currency` `currency` VARCHAR(3) NULL DEFAULT '' ,
+        CHANGE COLUMN `t_name` `t_name` VARCHAR(64) NULL DEFAULT '' ,
+        CHANGE COLUMN `t_accountcode` `t_accountcode` VARCHAR(64) NULL DEFAULT '' ,
+        CHANGE COLUMN `department` `department` VARCHAR(80) NULL DEFAULT '0' ;
+      ALTER TABLE `queue_cdr` 
+        CHANGE COLUMN `calldate` `calldate` DATETIME NULL,
+        CHANGE COLUMN `uniqid` `uniqid` VARCHAR(32) NULL DEFAULT '' ,
+        CHANGE COLUMN `queue` `queue` VARCHAR(80) NULL DEFAULT '' ,
+        CHANGE COLUMN `agentid` `agentid` VARCHAR(16) NULL DEFAULT '' ,
+        CHANGE COLUMN `agentname` `agentname` VARCHAR(80) NULL DEFAULT '' ,
+        CHANGE COLUMN `agentdev` `agentdev` VARCHAR(80) NULL DEFAULT '' ,
+        CHANGE COLUMN `agentcalls` `agentcalls` INT(10) UNSIGNED NULL DEFAULT '0' ,
+        CHANGE COLUMN `holdtime` `holdtime` INT(10) UNSIGNED NULL DEFAULT '0' ,
+        CHANGE COLUMN `talktime` `talktime` INT(10) UNSIGNED NULL DEFAULT '0' ,
+        CHANGE COLUMN `ringtime` `ringtime` INT(10) UNSIGNED NULL DEFAULT '0' ,
+        CHANGE COLUMN `position` `position` TINYINT(2) NULL DEFAULT '0' ,
+        CHANGE COLUMN `origposition` `origposition` TINYINT(2) NULL DEFAULT '0' ,
+        CHANGE COLUMN `callerid` `callerid` VARCHAR(80) NULL DEFAULT '' ,
+        CHANGE COLUMN `src` `src` VARCHAR(80) NULL DEFAULT '' ,
+        CHANGE COLUMN `channel` `channel` VARCHAR(80) NULL DEFAULT '' ,
+        CHANGE COLUMN `dstchannel` `dstchannel` VARCHAR(80) NULL DEFAULT '' ,
+        CHANGE COLUMN `disposition` `disposition` VARCHAR(32) NULL DEFAULT '' ,
+        CHANGE COLUMN `context` `context` VARCHAR(80) NULL DEFAULT '' ,
+        CHANGE COLUMN `exitcontext` `exitcontext` VARCHAR(80) NULL DEFAULT '' ,
+        CHANGE COLUMN `exten` `exten` VARCHAR(32) NULL DEFAULT '' ,
+        CHANGE COLUMN `accountcode` `accountcode` VARCHAR(80) NULL DEFAULT '' ,
+        CHANGE COLUMN `userfield` `userfield` VARCHAR(128) NULL DEFAULT '' ,
+        CHANGE COLUMN `appl` `appl` VARCHAR(80) NULL DEFAULT '' ,
+        CHANGE COLUMN `data` `data` VARCHAR(80) NULL DEFAULT '' ,
+        CHANGE COLUMN `reason` `reason` VARCHAR(32) NULL DEFAULT '' ,
+        CHANGE COLUMN `transferexten` `transferexten` VARCHAR(32) NULL DEFAULT '' ,
+        CHANGE COLUMN `transfercontext` `transfercontext` VARCHAR(80) NULL DEFAULT '' ,
+        CHANGE COLUMN `server` `server` VARCHAR(80) NULL ,
+        CHANGE COLUMN `outgoing` `outgoing` TINYINT(1) NULL ;
+    ]]></sql>
+  </changeSet>
   <changeSet id="2019-05-91-02" author="rp">
     <sql><![CDATA[
       ALTER TABLE `cdr` ADD COLUMN `recordingfile` VARCHAR(1024) NOT NULL DEFAULT '' ;
