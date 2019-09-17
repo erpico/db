@@ -1,4 +1,8 @@
-CREATE TABLE `acl_rule` (
+DROP DATABASE phc;
+CREATE DATABASE phc DEFAULT CHARSET 'utf8';
+USE phc;
+
+CREATE TABLE IF NOT EXISTS `acl_rule` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(256) DEFAULT NULL,
   `description` varchar(1024) DEFAULT NULL,
@@ -7,7 +11,7 @@ CREATE TABLE `acl_rule` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `acl_user` (
+CREATE TABLE IF NOT EXISTS  `acl_user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(128) DEFAULT NULL,
   `fullname` varchar(1024) DEFAULT NULL,
@@ -20,7 +24,7 @@ CREATE TABLE `acl_user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `acl_auth_token` (
+CREATE TABLE IF NOT EXISTS  `acl_auth_token` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `acl_user_id` int(10) unsigned NOT NULL,
   `token` varchar(32) NOT NULL,
@@ -29,14 +33,14 @@ CREATE TABLE `acl_auth_token` (
   `version` varchar(32) NOT NULL,
   `ip` varchar(16) NOT NULL,
   `issued` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `expire` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated` timestamp NULL,
+  `expire` timestamp NULL,
   PRIMARY KEY (`id`,`acl_user_id`),
   KEY `auth_token_FKIndex1` (`acl_user_id`),
   CONSTRAINT `acl_auth_token_ibfk_1` FOREIGN KEY (`acl_user_id`) REFERENCES `acl_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `acl_user_meta_field` (
+CREATE TABLE IF NOT EXISTS  `acl_user_meta_field` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(256) NOT NULL,
   `description` varchar(1024) DEFAULT NULL,
@@ -257,7 +261,7 @@ CREATE TABLE `outgouing_company` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `user_id` int(11) NOT NULL,
-  `tm_created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `tm_created` timestamp NULL,
   `name` varchar(128) NOT NULL,
   `description` text NOT NULL,
   `state` tinyint(4) NOT NULL,
@@ -274,7 +278,7 @@ CREATE TABLE `outgouing_company` (
   `pause_after_try` int(11) NOT NULL DEFAULT '10',
   `action` tinyint(2) NOT NULL DEFAULT '0',
   `action_value` varchar(64) NOT NULL DEFAULT '',
-  `last_conversation` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `last_conversation` timestamp NULL,
   `concurrent_calls_limit` int(11) NOT NULL DEFAULT '0',
   `call_duration_limit` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
@@ -282,17 +286,17 @@ CREATE TABLE `outgouing_company` (
 
 CREATE TABLE `calls` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `asteriskId` varchar(32) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `asteriskId` varchar(32) NOT NULL DEFAULT '',
   `userId` int(11) NOT NULL DEFAULT '0',
   `type` tinyint(4) NOT NULL DEFAULT '0',
   `state` tinyint(4) NOT NULL DEFAULT '0',
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `tm_created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `tm_rbt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `tm_bridged` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `tm_done` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `caller` varchar(16) CHARACTER SET latin1 NOT NULL DEFAULT '',
-  `called` varchar(16) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `tm_created` timestamp NULL,
+  `tm_rbt` timestamp NULL,
+  `tm_bridged` timestamp NULL,
+  `tm_done` timestamp NULL,
+  `caller` varchar(16) NOT NULL DEFAULT '',
+  `called` varchar(16) NOT NULL DEFAULT '',
   `rbt_duration` int(11) NOT NULL DEFAULT '0',
   `duration` int(11) NOT NULL DEFAULT '0',
   `fn_mixmonitor` varchar(255) NOT NULL DEFAULT '',
@@ -325,7 +329,7 @@ CREATE TABLE `outgouing_company_contacts` (
   `description` varchar(255) NOT NULL,
   `state` tinyint(4) NOT NULL DEFAULT '0',
   `tries` int(11) NOT NULL DEFAULT '0',
-  `last_call` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `last_call` timestamp NULL,
   `dial_result` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`,`outgouing_company_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 ROW_FORMAT=DYNAMIC;
@@ -356,7 +360,7 @@ CREATE TABLE `sip_log` (
 
 CREATE TABLE `queue_cdr` (
   `id` int(12) unsigned NOT NULL AUTO_INCREMENT,
-  `calldate` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `calldate` datetime NULL,
   `uniqid` varchar(32) NOT NULL DEFAULT '',
   `queue` varchar(80) NOT NULL DEFAULT '',
   `agentid` varchar(16) NOT NULL DEFAULT '',
@@ -415,7 +419,7 @@ CREATE TABLE `agents_events` (
 CREATE TABLE `cdr` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) NOT NULL DEFAULT '0',
-  `calldate` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `calldate` datetime NULL,
   `name` varchar(128) NOT NULL DEFAULT '',
   `clid` varchar(80) NOT NULL DEFAULT '',
   `src` varchar(80) NOT NULL DEFAULT '',
