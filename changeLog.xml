@@ -221,7 +221,7 @@
       <![CDATA[
         CREATE TABLE `read_conversation_message` (
           `conversation_message_id` int(11) NOT NULL,
-          `acl_user_id` int(10) unsigned default NULL,
+          `acl_user_id` int(10) unsigned NOT NULL,
           PRIMARY KEY `pk_conversation_message_id_idx` (`conversation_message_id`,`acl_user_id`),
           KEY `pk_user_id_idx` (`acl_user_id`),
           CONSTRAINT `fk_read_conversation_message1`
