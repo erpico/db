@@ -617,4 +617,23 @@
     ADD COLUMN `port` INT(11) NULL AFTER `host`;
     ]]></sql>
   </changeSet> 
+  <changeSet id="2019-10-01-01" author="rp">
+    <sql><![CDATA[
+      ALTER TABLE `contact_groups` CHANGE COLUMN `queue` `queue` VARCHAR(128) NULL ;
+      ALTER TABLE `agents_events` 
+		CHANGE COLUMN `source` `source` VARCHAR(32) NULL ,
+		CHANGE COLUMN `event` `event` VARCHAR(32) NULL ,
+		CHANGE COLUMN `agentid` `agentid` VARCHAR(32) NULL ,
+		CHANGE COLUMN `agentname` `agentname` VARCHAR(80) NULL ,
+		CHANGE COLUMN `agentdev` `agentdev` VARCHAR(80) NULL ,
+		CHANGE COLUMN `reason` `reason` VARCHAR(80) NULL ,
+		CHANGE COLUMN `penalty` `penalty` VARCHAR(16) NULL ,
+		CHANGE COLUMN `oldstatus` `oldstatus` TINYINT(1) NULL ,
+		CHANGE COLUMN `status` `status` TINYINT(1) UNSIGNED NULL ,
+		CHANGE COLUMN `paused` `paused` TINYINT(1) UNSIGNED NULL ,
+		CHANGE COLUMN `dynamic` `dynamic` TINYINT(1) NULL ,
+		CHANGE COLUMN `realtime` `realtime` TINYINT(1) NULL ,
+		CHANGE COLUMN `calls` `calls` INT(11) NULL ;
+    ]]></sql>
+  </changeSet> 
 </databaseChangeLog>
