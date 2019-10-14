@@ -636,4 +636,9 @@
 		CHANGE COLUMN `calls` `calls` INT(11) NULL ;
     ]]></sql>
   </changeSet> 
+  <changeSet id="2019-10-11-01" author="rp">
+    <sql><![CDATA[
+      ALTER TABLE `cdr` ADD INDEX `uniqid` (`uniqueid` ASC);
+    ]]></sql>
+  </changeSet> 
 </databaseChangeLog>
