@@ -650,4 +650,27 @@
       ALTER TABLE `cdr` ADD INDEX `uniqid` (`uniqueid` ASC);
     ]]></sql>
   </changeSet> 
+  <changeSet id="2019-10-26-01" author="andrey.mrthod">
+    <sql><![CDATA[
+     CREATE TABLE IF NOT EXISTS `acl_group_phone` (
+      `id` INT NOT NULL AUTO_INCREMENT,
+      `name` VARCHAR(45) NOT NULL,
+      `code` VARCHAR(45) NULL,
+      `pattern` INT(11) NULL,
+      `rules` INT(11) NULL,
+      `outgoing_phone` VARCHAR(45) NULL,
+      PRIMARY KEY (`id`));
+    ALTER TABLE `acl_group_phone` 
+      CHANGE COLUMN `pattern` `pattern` VARCHAR(45) NULL DEFAULT NULL ,
+      CHANGE COLUMN `rules` `rules` VARCHAR(45) NULL DEFAULT NULL ;      
+    CREATE TABLE IF NOT EXISTS `acl_group_has_phone` (
+      `group_id` INT(11) UNSIGNED NOT NULL,
+      `phone_id` INT(11) UNSIGNED NOT NULL,
+      PRIMARY KEY (`group_id`, `phone_id`));
+    ALTER TABLE IF NOT EXISTS `acl_group_has_phone` 
+      CHANGE COLUMN `group_id` `group_id` INT(11) NOT NULL ,
+      CHANGE COLUMN `phone_id` `phone_id` INT(11) NOT NULL ,
+      ADD UNIQUE INDEX `phone_id_UNIQUE` (`phone_id` ASC);
+    ]]></sql>
+  </changeSet> 
 </databaseChangeLog>
