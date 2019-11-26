@@ -667,7 +667,7 @@
       `group_id` INT(11) UNSIGNED NOT NULL,
       `phone_id` INT(11) UNSIGNED NOT NULL,
       PRIMARY KEY (`group_id`, `phone_id`));
-    ALTER TABLE IF NOT EXISTS `acl_group_has_phone` 
+    ALTER TABLE `acl_group_has_phone` 
       CHANGE COLUMN `group_id` `group_id` INT(11) NOT NULL ,
       CHANGE COLUMN `phone_id` `phone_id` INT(11) NOT NULL ,
       ADD UNIQUE INDEX `phone_id_UNIQUE` (`phone_id` ASC);
