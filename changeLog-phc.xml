@@ -673,4 +673,27 @@
       ADD UNIQUE INDEX `phone_id_UNIQUE` (`phone_id` ASC);
     ]]></sql>
   </changeSet> 
+  <changeSet id="2020-02-21-01" author="rp">
+    <sql><![CDATA[
+      ALTER TABLE queue_agent ADD phone VARCHAR(45) NULL, ADD `static` TINYINT(1) NULL;
+	  ALTER TABLE `queue_agent` 
+		CHANGE COLUMN `phone` `phone` VARCHAR(45) NOT NULL AFTER `acl_user_id`,
+		CHANGE COLUMN `acl_user_id` `acl_user_id` INT(10) UNSIGNED NULL ,
+		DROP PRIMARY KEY;
+	  ALTER TABLE `queue` ENGINE = InnoDB;	
+	  ALTER TABLE `queue_agent` ENGINE = InnoDB,
+	    CHANGE COLUMN `acl_user_id` `acl_user_id` INT(10) UNSIGNED NULL ;
+      ALTER TABLE `queue_agent` 
+		ADD CONSTRAINT `qid`
+		FOREIGN KEY (`queue_id`)
+		REFERENCES `queue` (`id`)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION,
+	  ADD CONSTRAINT `uid`
+		FOREIGN KEY (`acl_user_id`)
+		REFERENCES `acl_user` (`id`)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION;
+    ]]></sql>
+  </changeSet> 
 </databaseChangeLog>
