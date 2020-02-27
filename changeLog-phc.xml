@@ -677,7 +677,7 @@
     <sql><![CDATA[
       ALTER TABLE queue_agent ADD phone VARCHAR(45) NULL, ADD `static` TINYINT(1) NULL;
 	  ALTER TABLE `queue_agent` 
-		CHANGE COLUMN `phone` `phone` VARCHAR(45) NOT NULL AFTER `acl_user_id`,
+		CHANGE COLUMN `phone` `phone` VARCHAR(45) NULL AFTER `acl_user_id`,
 		CHANGE COLUMN `acl_user_id` `acl_user_id` INT(10) UNSIGNED NULL ,
 		DROP PRIMARY KEY;
 	  ALTER TABLE `queue` ENGINE = InnoDB;	
