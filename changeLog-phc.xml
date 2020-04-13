@@ -696,4 +696,20 @@
 		ON UPDATE NO ACTION;
     ]]></sql>
   </changeSet> 
+  <changeSet id="2020-04-08-01" author="rp">
+    <sql><![CDATA[
+  CREATE TABLE `aliases` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`number` VARCHAR(45) NULL,
+	`type` ENUM("phone","queue","user") NULL,
+	`phone` VARCHAR(45) NULL,
+	`queues_id` INT NULL,
+	`users_id` INT NULL,
+	INDEX `number_idx` (`number` ASC),
+	PRIMARY KEY (`id`))
+	ENGINE = InnoDB
+	DEFAULT CHARACTER SET = utf8
+	COLLATE = utf8_bin;
+    ]]></sql>
+  </changeSet> 
 </databaseChangeLog>
