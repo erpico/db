@@ -724,4 +724,17 @@
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8;
     ]]></sql>
   </changeSet> 
+  <changeSet id="2020-09-09-02" author="rp">
+    <sql><![CDATA[
+    ALTER TABLE `queue`ADD COLUMN `deleted` TINYINT(1) NULL DEFAULT 0 AFTER `pattern`;
+    ALTER TABLE `acl_user_group`ADD COLUMN `deleted` TINYINT(1) NULL DEFAULT 0 AFTER `description`;
+    ALTER TABLE `acl_user_group_has_users` ADD COLUMN `deleted` TINYINT(1) NULL DEFAULT 0 AFTER `acl_user_id`;
+    ALTER TABLE `contact_groups` ADD COLUMN `deleted` TINYINT(1) NULL DEFAULT 0 AFTER `name`;
+    ALTER TABLE `contact_groups_queues` ADD COLUMN `deleted` TINYINT(1) NULL DEFAULT 0 AFTER `queue_id`;
+    ALTER TABLE `contact_groups_items` ADD COLUMN `deleted` TINYINT(1) NULL DEFAULT 0 AFTER `queue`;
+    ALTER TABLE `acl_user_phone` ADD COLUMN `deleted` TINYINT(1) NULL DEFAULT 0 AFTER `default_phone`;
+    ALTER TABLE `acl_group_phone` ADD COLUMN `deleted` TINYINT(1) NULL DEFAULT 0 AFTER `outgoing_phone`;
+    ALTER TABLE `peers` ADD COLUMN `deleted `TINYINT(1) NULL DEFAULT 0 AFTER `port`;
+    ]]></sql>
+  </changeSet> 
 </databaseChangeLog>
