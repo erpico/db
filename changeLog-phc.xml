@@ -712,4 +712,16 @@
 	COLLATE = utf8_bin;
     ]]></sql>
   </changeSet> 
+  <changeSet id="2020-09-09-01" author="rp">
+    <sql><![CDATA[
+	CREATE TABLE `blacklist` (
+	  `id` int NOT NULL AUTO_INCREMENT,
+	  `phone` varchar(45) NOT NULL,
+	  `action` json DEFAULT NULL,
+	  `comment` varchar(255) DEFAULT NULL,
+	  `deleted` tinyint DEFAULT NULL,
+	  PRIMARY KEY (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    ]]></sql>
+  </changeSet> 
 </databaseChangeLog>
