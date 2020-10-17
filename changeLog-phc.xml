@@ -737,4 +737,12 @@
     ALTER TABLE `peers` ADD COLUMN `deleted `TINYINT(1) NULL DEFAULT 0 AFTER `port`;
     ]]></sql>
   </changeSet> 
+  <changeSet id="2020-10-17-01" author="rp">
+    <sql><![CDATA[
+	ALTER TABLE `outgouing_company` 
+		ADD COLUMN `dial_context` VARCHAR(128) NULL AFTER `call_duration_limit`,
+		CHANGE COLUMN `tm_created` `tm_created` TIMESTAMP NULL ,
+		CHANGE COLUMN `last_conversation` `last_conversation` TIMESTAMP NULL ;
+    ]]></sql>
+  </changeSet> 
 </databaseChangeLog>
