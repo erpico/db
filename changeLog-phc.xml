@@ -745,4 +745,11 @@
 		CHANGE COLUMN `last_conversation` `last_conversation` TIMESTAMP NULL ;
     ]]></sql>
   </changeSet> 
+  <changeSet id="2020-10-23-01" author="rp">
+    <sql><![CDATA[
+	ALTER TABLE `queue` ADD COLUMN `active` TINYINT(1) NOT NULL DEFAULT '1' AFTER `deleted`;
+	ALTER TABLE `acl_user_phone` ADD COLUMN `active` TINYINT(1) NOT NULL DEFAULT '1' AFTER `deleted`;
+	ALTER TABLE `peers` ADD COLUMN `active` TINYINT(1) NOT NULL DEFAULT '1' AFTER `deleted`;
+    ]]></sql>
+  </changeSet> 
 </databaseChangeLog>
