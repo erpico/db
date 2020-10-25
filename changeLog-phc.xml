@@ -734,7 +734,7 @@
     ALTER TABLE `contact_groups_items` ADD COLUMN `deleted` TINYINT(1) NULL DEFAULT 0 AFTER `queue`;
     ALTER TABLE `acl_user_phone` ADD COLUMN `deleted` TINYINT(1) NULL DEFAULT 0 AFTER `default_phone`;
     ALTER TABLE `acl_group_phone` ADD COLUMN `deleted` TINYINT(1) NULL DEFAULT 0 AFTER `outgoing_phone`;
-    ALTER TABLE `peers` ADD COLUMN `deleted `TINYINT(1) NULL DEFAULT 0 AFTER `port`;
+    ALTER TABLE `peers` ADD COLUMN `deleted` TINYINT(1) NULL DEFAULT 0 AFTER `port`;
     ]]></sql>
   </changeSet> 
   <changeSet id="2020-10-17-01" author="rp">
