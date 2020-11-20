@@ -752,4 +752,11 @@
 	ALTER TABLE `peers` ADD COLUMN `active` TINYINT(1) NOT NULL DEFAULT '1' AFTER `deleted`;
     ]]></sql>
   </changeSet> 
+  <changeSet id="2020-11-18-01" author="rp">
+    <sql><![CDATA[
+    INSERT INTO `cfg_setting` (`handle`, `val`) VALUES ('cti.autopause.onlock', '0');
+    ALTER TABLE `queue` ADD COLUMN `autopause` INT NULL DEFAULT 0 AFTER `pattern`;
+    ALTER TABLE `queue` ADD COLUMN `alarms` JSON NULL AFTER `autopause`;
+    ]]></sql>
+  </changeSet>   
 </databaseChangeLog>
